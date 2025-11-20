@@ -45,25 +45,26 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-      Future.delayed(const Duration(seconds: 3), () async {
-      final userController = Get.find<UserController>();
-      final socketController = Get.find<SocketController>();
+    // Navigation logic after splash
+    Future.delayed(const Duration(seconds: 3), () async {
       final storageController = Get.find<StorageController>();
       bool newUser = await storageController.getUserStatus();
+
       if (newUser) {
-        Get.offAll(AppRoutes.onboarding);
+        Get.offAllNamed(AppRoutes.onboarding);
         await storageController.saveStatus("notNewAgain");
         return;
       }
+
       String? token = await storageController.getToken();
       if (token == null || token.isEmpty) {
         Get.offAllNamed(AppRoutes.login);
         return;
       }
+
       await userController.getUserDetails();
       await userController.getUserStatus();
       await socketController.initializeSocket();
-
     });
   }
 
@@ -78,25 +79,50 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(gradient: AppColors.bgGradient),
-        child: Center(
-          child: AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              return Transform.translate(
-                offset: Offset(0, _bounceAnimation.value),
-                child: Opacity(
-                  opacity: fadeAnimation.value,
-                  child: Image.asset(
-                    'assets/images/loogo.png',
-                    fit: BoxFit.contain,
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    height: MediaQuery.of(context).size.height * 0.45,
+        child: Stack(
+          children: [
+            // Logo with bounce + fade animation (center)
+            Center(
+              child: AnimatedBuilder(
+                animation: _controller,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(0, _bounceAnimation.value),
+                    child: Opacity(
+                      opacity: fadeAnimation.value,
+                      child: Image.asset(
+                        'assets/images/loogo.png',
+                        fit: BoxFit.contain,
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            // "Rex & Mitogo family" text at bottom center
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: 40,
+                ), // adjust spacing as needed
+                child: Text(
+                  "Rex & Mitogo family",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primaryColor,
+                    letterSpacing: 0.8,
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
