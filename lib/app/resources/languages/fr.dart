@@ -200,6 +200,37 @@ const Map<String, String> frFR = {
       'Bienvenue ! Veuillez entrer vos informations ci-dessous\npour créer un nouveau compte.',
   'no_posts_found_profile': 'Aucun message trouvé',
 
+  'saved_posts': 'Publications enregistrées',
+  'about': 'À propos',
+
+  'inbox_notification': 'Notification de messages',
+  'vibrate': 'Vibrer',
+  'sound': 'Son',
+
+  'posts': 'Publications',
+  'photos': 'Photos',
+  'videos': 'Vidéos',
+  'music': 'Musique',
+  'add_photo': 'Ajouter une photo',
+  'add_video': 'Ajouter une vidéo',
+  'empty_photo_post': 'Aucune photo pour l’instant',
+  'empty_video_post': 'Aucune vidéo pour l’instant',
+  'empty_music_post': 'Aucune musique pour l’instant',
+  'edit_profile_info': 'Modifier les infos du profil',
+  'unfollow': 'Ne plus suivre',
+  'work': 'Travail',
+  'education': 'Études',
+  'follower': 'Abonné',
+  'edit_your_profile': 'Modifier votre profil',
+  'put_info_to_complete':
+      'Saisissez les informations pour compléter votre profil',
+  'display_name': 'Nom affiché',
+  'phone_number': 'Numéro de téléphone',
+  'biography': 'Biographie',
+  'save_changes': 'Enregistrer les modifications',
+  'welcome_complete_profile':
+      'Bienvenue ! Veuillez saisir les informations ci-dessous\npour créer un nouveau compte.',
+
   // ========== Recherche ==========
   'no_accounts_found': 'Aucun compte trouvé',
   'search_people': 'Rechercher des personnes',
@@ -211,6 +242,27 @@ const Map<String, String> frFR = {
   'follow': 'Suivre',
   'following': 'Abonné',
   'trending': 'tendance',
+
+  'get_help': 'Obtenir de l’aide',
+  'message': 'Message',
+  'enter_your_message': 'Écrivez votre message',
+  'browse_images_or_drop_here': 'Parcourir ou déposer des images ici',
+  'jpg_png_max_25mb': 'JPG, PNG, taille max. 25 Mo',
+  'please_select_at_least_one_image':
+      'Veuillez sélectionner au moins une image',
+  'you_can_select_maximum_5_images':
+      'Vous pouvez sélectionner jusqu’à 5 images',
+  'please_enter_a_subject': 'Veuillez saisir un sujet',
+  'please_enter_a_message': 'Veuillez rédiger votre message',
+
+  'username_verification': 'Vérification du nom d’utilisateur',
+  'full_legal_name': 'Nom légal complet',
+  'enter_your_full_legal_name': 'Entrez votre nom légal complet',
+  'front_id': 'Face avant de la pièce d’identité',
+  'back_id': 'Dos de la pièce d’identité',
+  'selfie_id': 'Selfie avec pièce d’identité',
+  'submit': 'Envoyer',
+  'please_upload_all_documents': 'Veuillez télécharger tous les documents',
 
   // ========== Commentaires ==========
   'no_comments_yet': 'Pas encore de commentaires',

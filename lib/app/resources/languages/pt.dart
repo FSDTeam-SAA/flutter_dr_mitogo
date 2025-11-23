@@ -198,6 +198,36 @@ const Map<String, String> ptBR = {
       'Bem-vindo! Por favor, insira suas informações abaixo\npara criar uma nova conta.',
   'no_posts_found_profile': 'Nenhuma postagem encontrada',
 
+  'saved_posts': 'Publicações salvas',
+  'about': 'Sobre',
+
+  'inbox_notification': 'Notificação da caixa de entrada',
+  'vibrate': 'Vibrar',
+  'sound': 'Som',
+
+  'posts': 'Publicações',
+  'photos': 'Fotos',
+  'videos': 'Vídeos',
+  'music': 'Música',
+  'add_photo': 'Adicionar foto',
+  'add_video': 'Adicionar vídeo',
+  'empty_photo_post': 'Nenhuma foto ainda',
+  'empty_video_post': 'Nenhum vídeo ainda',
+  'empty_music_post': 'Nenhuma música ainda',
+  'edit_profile_info': 'Editar informações do perfil',
+  'unfollow': 'Deixar de seguir',
+  'work': 'Trabalho',
+  'education': 'Educação',
+  'follower': 'Seguidor',
+  'edit_your_profile': 'Editar seu perfil',
+  'put_info_to_complete': 'Insira as informações para completar seu perfil',
+  'display_name': 'Nome de exibição',
+  'phone_number': 'Número de telefone',
+  'biography': 'Biografia',
+  'save_changes': 'Salvar alterações',
+  'welcome_complete_profile':
+      'Bem-vindo! Insira as informações abaixo\npara criar uma nova conta.',
+
   // ========== Pesquisa ==========
   'no_accounts_found': 'Nenhuma conta encontrada',
 
@@ -210,6 +240,25 @@ const Map<String, String> ptBR = {
   'follow': 'Seguir',
   'following': 'Seguindo',
   'trending': 'em alta',
+
+  'get_help': 'Obter Ajuda',
+  'message': 'Mensagem',
+  'enter_your_message': 'Digite sua mensagem',
+  'browse_images_or_drop_here': 'Procurar imagens ou soltar aqui',
+  'jpg_png_max_25mb': 'JPG, PNG, tamanho máximo 25 MB',
+  'please_select_at_least_one_image': 'Selecione pelo menos uma imagem',
+  'you_can_select_maximum_5_images': 'Você pode selecionar no máximo 5 imagens',
+  'please_enter_a_subject': 'Por favor, insira um assunto',
+  'please_enter_a_message': 'Por favor, escreva sua mensagem',
+
+  'username_verification': 'Verificação de nome de usuário',
+  'full_legal_name': 'Nome legal completo',
+  'enter_your_full_legal_name': 'Digite seu nome legal completo',
+  'front_id': 'Frente do documento',
+  'back_id': 'Verso do documento',
+  'selfie_id': 'Selfie com documento',
+  'submit': 'Enviar',
+  'please_upload_all_documents': 'Por favor, envie todos os documentos',
 
   // ========== Comentários ==========
   'no_comments_yet': 'Nenhum comentário ainda',

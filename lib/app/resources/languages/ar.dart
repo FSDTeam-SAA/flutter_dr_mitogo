@@ -194,6 +194,35 @@ const Map<String, String> arAR = {
   'complete_profile_description':
       'مرحبا! يرجى إدخال معلوماتك أدناه\nلإنشاء حساب جديد.',
   'no_posts_found_profile': 'لم يتم العثور على منشورات',
+  'saved_posts': 'المنشورات المحفوظة',
+  'about': 'حول التطبيق',
+
+  'inbox_notification': 'إشعارات الرسائل',
+  'vibrate': 'اهتزاز',
+  'sound': 'صوت',
+
+  'posts': 'المنشورات',
+  'photos': 'الصور',
+  'videos': 'الفيديوهات',
+  'music': 'الموسيقى',
+  'add_photo': 'إضافة صورة',
+  'add_video': 'إضافة فيديو',
+  'empty_photo_post': 'لا توجد صور بعد',
+  'empty_video_post': 'لا توجد فيديوهات بعد',
+  'empty_music_post': 'لا توجد موسيقى بعد',
+  'edit_profile_info': 'تعديل معلومات الملف الشخصي',
+  'unfollow': 'إلغاء المتابعة',
+  'work': 'العمل',
+  'education': 'التعليم',
+  'follower': 'متابع',
+  'edit_your_profile': 'تعديل ملفك الشخصي',
+  'put_info_to_complete': 'أدخل المعلومات لإكمال ملفك الشخصي',
+  'display_name': 'اسم العرض',
+  'phone_number': 'رقم الهاتف',
+  'biography': 'نبذة عني',
+  'save_changes': 'حفظ التغييرات',
+  'welcome_complete_profile':
+      'مرحبًا! يرجى إدخال المعلومات أدناه\nلإنشاء حساب جديد.',
 
   // ========== البحث ==========
   'no_accounts_found': 'لم يتم العثور على حسابات',
@@ -207,6 +236,25 @@ const Map<String, String> arAR = {
   'follow': 'متابعة',
   'following': 'يتابع',
   'trending': 'رائج',
+
+  'get_help': 'الحصول على المساعدة',
+  'message': 'الرسالة',
+  'enter_your_message': 'اكتب رسالتك',
+  'browse_images_or_drop_here': 'استعرض الصور أو اسحبها هنا',
+  'jpg_png_max_25mb': 'JPG، PNG، حجم الملف لا يزيد عن 25 ميجا',
+  'please_select_at_least_one_image': 'الرجاء اختيار صورة واحدة على الأقل',
+  'you_can_select_maximum_5_images': 'يمكنك اختيار 5 صور كحد أقصى',
+  'please_enter_a_subject': 'الرجاء إدخال الموضوع',
+  'please_enter_a_message': 'الرجاء كتابة رسالتك',
+
+  'username_verification': 'توثيق اسم المستخدم',
+  'full_legal_name': 'الاسم القانوني الكامل',
+  'enter_your_full_legal_name': 'أدخل اسمك القانوني الكامل',
+  'front_id': 'واجهة الهوية',
+  'back_id': 'ظهر الهوية',
+  'selfie_id': 'صورة سيلفي مع الهوية',
+  'submit': 'إرسال',
+  'please_upload_all_documents': 'الرجاء رفع جميع المستندات',
 
   // ========== التعليقات ==========
   'no_comments_yet': 'لا توجد تعليقات بعد',

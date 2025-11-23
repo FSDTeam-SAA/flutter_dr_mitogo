@@ -198,6 +198,36 @@ const Map<String, String> esES = {
       '¡Bienvenido! Por favor ingresa tu información a continuación\npara crear una nueva cuenta.',
   'no_posts_found_profile': 'No se encontraron publicaciones',
 
+  'saved_posts': 'Publicaciones guardadas',
+  'about': 'Acerca de',
+
+  'inbox_notification': 'Notificación de mensajes',
+  'vibrate': 'Vibrar',
+  'sound': 'Sonido',
+
+  'posts': 'Publicaciones',
+  'photos': 'Fotos',
+  'videos': 'Videos',
+  'music': 'Música',
+  'add_photo': 'Añadir foto',
+  'add_video': 'Añadir vídeo',
+  'empty_photo_post': 'Aún no hay fotos',
+  'empty_video_post': 'Aún no hay videos',
+  'empty_music_post': 'Aún no hay música',
+  'edit_profile_info': 'Editar información del perfil',
+  'unfollow': 'Dejar de seguir',
+  'work': 'Trabajo',
+  'education': 'Educación',
+  'follower': 'Seguidor',
+  'edit_your_profile': 'Editar tu perfil',
+  'put_info_to_complete': 'Ingresa la información para completar tu perfil',
+  'display_name': 'Nombre visible',
+  'phone_number': 'Número de teléfono',
+  'biography': 'Biografía',
+  'save_changes': 'Guardar cambios',
+  'welcome_complete_profile':
+      '¡Bienvenido! Ingresa la información a continuación\npara crear una nueva cuenta.',
+
   // ========== Búsqueda ==========
   'no_accounts_found': 'No se encontraron cuentas',
 
@@ -210,6 +240,26 @@ const Map<String, String> esES = {
   'follow': 'Seguir',
   'following': 'Siguiendo',
   'trending': 'tendencia',
+
+  'get_help': 'Obtener ayuda',
+  'message': 'Mensaje',
+  'enter_your_message': 'Escribe tu mensaje',
+  'browse_images_or_drop_here': 'Explora imágenes o arrástralas aquí',
+  'jpg_png_max_25mb': 'JPG, PNG, tamaño máximo 25 MB',
+  'please_select_at_least_one_image':
+      'Por favor selecciona al menos una imagen',
+  'you_can_select_maximum_5_images': 'Puedes seleccionar máximo 5 imágenes',
+  'please_enter_a_subject': 'Por favor ingresa un asunto',
+  'please_enter_a_message': 'Por favor escribe tu mensaje',
+
+  'username_verification': 'Verificación de nombre de usuario',
+  'full_legal_name': 'Nombre legal completo',
+  'enter_your_full_legal_name': 'Ingresa tu nombre legal completo',
+  'front_id': 'Frente del documento',
+  'back_id': 'Reverso del documento',
+  'selfie_id': 'Selfie con documento',
+  'submit': 'Enviar',
+  'please_upload_all_documents': 'Por favor sube todos los documentos',
 
   // ========== Comentarios ==========
   'no_comments_yet': 'Sin comentarios aún',

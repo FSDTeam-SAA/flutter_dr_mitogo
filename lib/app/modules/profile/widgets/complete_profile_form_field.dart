@@ -74,7 +74,7 @@ class CompleteProfileFormFields extends StatelessWidget {
           const SizedBox(height: 5),
           buildUserNameTextFieldAutoValidate(),
           const SizedBox(height: 15),
-          Text("Education", style: Get.textTheme.bodyMedium),
+          Text("education".tr, style: Get.textTheme.bodyMedium),
           const SizedBox(height: 5),
           CustomTextField(
             hintText: "ABC School",
@@ -82,7 +82,7 @@ class CompleteProfileFormFields extends StatelessWidget {
             validator: (_) => null,
           ),
           const SizedBox(height: 15),
-          Text("Work", style: Get.textTheme.bodyMedium),
+          Text("work".tr, style: Get.textTheme.bodyMedium),
           const SizedBox(height: 5),
           CustomTextField(
             hintText: "XYZ Company",
@@ -90,7 +90,7 @@ class CompleteProfileFormFields extends StatelessWidget {
             validator: (_) => null,
           ),
           const SizedBox(height: 15),
-          Text("Biography", style: Get.textTheme.bodyMedium),
+          Text("biography".tr, style: Get.textTheme.bodyMedium),
           const SizedBox(height: 5),
           CustomTextField(
             hintText: "Write here",

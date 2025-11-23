@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   final RxBool isLoading = false.obs;
   // final RxBool isFollowing = false.obs;
 
-  final _tabs = ['Posts', 'Photos', 'Videos', 'Music'];
+  final _tabs = ['posts'.tr, 'photos'.tr, 'videos'.tr, 'music'.tr];
   final userController = Get.find<UserController>();
   final postController = Get.find<PostController>();
 
@@ -151,7 +151,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  "Add Photo",
+                  "add_photo".tr,
                   style: GoogleFonts.montserrat(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -178,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  "Add Video",
+                  "add_video".tr,
                   style: GoogleFonts.montserrat(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -316,7 +316,9 @@ class _ProfileScreenState extends State<ProfileScreen>
               },
               isLoading: false.obs,
               child: Text(
-                userModel.value!.isFollowing!.value ? "Unfollow" : "Follow",
+                userModel.value!.isFollowing!.value
+                    ? "unfollow".tr
+                    : "follow".tr,
                 style: GoogleFonts.montserrat(
                   fontSize: 12,
                   color: Colors.white,
@@ -344,7 +346,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   return Text(
                     formatText(
                       userModel.value?.followerCount?.value,
-                      "Follower",
+                      "follower".tr,
                     ),
                     style: Get.textTheme.bodySmall!.copyWith(
                       fontSize: 12,
@@ -375,7 +377,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   return Text(
                     formatText(
                       userModel.value?.followingCount?.value,
-                      "Following",
+                      "following".tr,
                     ),
                     style: Get.textTheme.bodySmall!.copyWith(
                       fontSize: 12,
@@ -399,7 +401,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             Row(
               children: [
                 Text(
-                  "Work",
+                  "work".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -417,7 +419,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             Row(
               children: [
                 Text(
-                  "Education",
+                  "education".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -500,7 +502,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Icon(Icons.edit, size: 16, color: AppColors.primaryColor),
                   SizedBox(width: 3),
                   Text(
-                    "Edit Profile Info",
+                    "edit_profile_info".tr,
                     style: Get.textTheme.bodyMedium!.copyWith(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w700,
@@ -598,7 +600,7 @@ class _ProfileScreenState extends State<ProfileScreen>
           height: Get.height * 0.65,
           width: Get.width,
           child: Center(
-            child: Text("No posts found", style: Get.textTheme.bodyMedium),
+            child: Text("no_posts_found".tr, style: Get.textTheme.bodyMedium),
           ),
         );
       }
@@ -628,7 +630,8 @@ class _ProfileScreenState extends State<ProfileScreen>
           height: Get.height * 0.2,
           width: Get.width,
           child: Center(
-            child: Text("Empty Photo Post", style: Get.textTheme.bodyMedium),
+            /// [Todo: Localize this string]
+            child: Text("empty_photo_post".tr, style: Get.textTheme.bodyMedium),
           ),
         );
       }
@@ -685,7 +688,7 @@ class _ProfileScreenState extends State<ProfileScreen>
           height: Get.height * 0.2,
           width: Get.width,
           child: Center(
-            child: Text("Empty Music Post", style: Get.textTheme.bodyMedium),
+            child: Text("empty_music_post".tr, style: Get.textTheme.bodyMedium),
           ),
         );
       }
@@ -712,7 +715,7 @@ class _ProfileScreenState extends State<ProfileScreen>
           height: Get.height * 0.2,
           width: Get.width,
           child: Center(
-            child: Text("Empty Video Post", style: Get.textTheme.bodyMedium),
+            child: Text("empty_video_post".tr, style: Get.textTheme.bodyMedium),
           ),
         );
       }
@@ -749,7 +752,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
               return InkWell(
                 onTap: () {
-                 Get.to(() => LittleVideoViewer(videoPost: videoPost));
+                  Get.to(() => LittleVideoViewer(videoPost: videoPost));
                 },
                 child: Stack(
                   alignment: Alignment.center,
@@ -952,7 +955,7 @@ class _AllProfilePostState extends State<AllProfilePost>
           height: Get.height * 0.65,
           width: Get.width,
           child: Center(
-            child: Text("No posts found", style: Get.textTheme.bodyMedium),
+            child: Text("no_posts_found".tr, style: Get.textTheme.bodyMedium),
           ),
         );
       }

@@ -63,22 +63,22 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
               children: [
                 SizedBox(height: Get.height * 0.03),
                 _buildSettingTile(
-                  title: "Push Notifications",
+                  title: "push_notifications".tr,
                   value: controller.isPushNotification,
                 ),
                 _buildSettingTile(
-                  title: "Real time Updates",
+                  title: "real_time_updates".tr,
                   value: controller.isRealTimeUpdates,
                 ),
                 _buildSettingTile(
-                  title: "Inbox Notification",
+                  title: "inbox_notification".tr,
                   value: controller.isInboxNotification,
                 ),
                 _buildSettingTile(
-                  title: "Vibrate",
+                  title: "vibrate".tr,
                   value: controller.isVibrate,
                 ),
-                _buildSettingTile(title: "Sound ", value: controller.isSound),
+                _buildSettingTile(title: "sound".tr, value: controller.isSound),
               ],
             );
           }),
@@ -135,7 +135,7 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Notification Settings",
+        "notification_settings".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

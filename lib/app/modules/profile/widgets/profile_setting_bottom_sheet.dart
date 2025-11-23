@@ -7,11 +7,11 @@ class ProfileSettingBottomSheet extends StatelessWidget {
   ProfileSettingBottomSheet({super.key});
 
   final List<String> _reportReasons = [
-    "Edit Profile",
-    "Saved Posts",
-    "About",
-    "Terms & Conditions",
-    "Privacy Policy",
+    "edit_profile".tr,
+    "saved_posts".tr,
+    "about".tr,
+    "terms_and_conditions".tr,
+    "privacy_policy".tr,
   ];
 
   @override

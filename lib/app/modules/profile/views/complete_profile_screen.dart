@@ -73,11 +73,14 @@ class CompleteProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.02),
               Center(
-                child: Text('Complete profile', style: Get.textTheme.bodyLarge),
+                child: Text(
+                  'complete_profile'.tr,
+                  style: Get.textTheme.bodyLarge,
+                ),
               ),
               Center(
                 child: Text(
-                  "Welcome! Please enter information below\nto create a new account.",
+                  "welcome_complete_profile".tr,
                   textAlign: TextAlign.center,
                   style: Get.textTheme.bodySmall,
                 ),

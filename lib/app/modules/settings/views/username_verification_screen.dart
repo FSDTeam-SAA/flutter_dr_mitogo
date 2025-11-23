@@ -37,7 +37,7 @@ class UsernameVerificationScreen extends StatelessWidget {
             children: [
               SizedBox(height: Get.height * 0.03),
               Text(
-                "Full Legal Name",
+                "full_legal_name".tr,
                 style: Get.textTheme.bodyMedium?.copyWith(
                   color: Color(0xFF312A2A),
                   fontWeight: FontWeight.w800,
@@ -46,7 +46,7 @@ class UsernameVerificationScreen extends StatelessWidget {
               SizedBox(height: Get.height * 0.01),
               CustomTextField(
                 bgColor: Color(0xffF7F7F9),
-                hintText: "Enter your full legal name",
+                hintText: "enter_your_full_legal_name".tr,
               ),
               SizedBox(height: Get.height * 0.03),
 
@@ -90,14 +90,14 @@ class UsernameVerificationScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Front ID",
+                                      "front_id".tr,
                                       style: Get.textTheme.bodyMedium!.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      "JPG, PNG , file size no more than 25MB",
+                                      "jpg_png_max_25mb".tr,
                                       style: Get.textTheme.bodySmall!.copyWith(
                                         fontWeight: FontWeight.normal,
                                         fontSize: 9,
@@ -152,14 +152,14 @@ class UsernameVerificationScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Back ID",
+                                      "back_id".tr,
                                       style: Get.textTheme.bodyMedium!.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      "JPG, PNG , file size no more than 25MB",
+                                      "jpg_png_max_25mb".tr,
                                       style: Get.textTheme.bodySmall!.copyWith(
                                         fontWeight: FontWeight.normal,
                                         fontSize: 9,
@@ -214,14 +214,14 @@ class UsernameVerificationScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Selfie ID",
+                                      "selfie_id".tr,
                                       style: Get.textTheme.bodyMedium!.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      "JPG, PNG , file size no more than 25MB",
+                                      "jpg_png_max_25mb".tr,
                                       style: Get.textTheme.bodySmall!.copyWith(
                                         fontWeight: FontWeight.normal,
                                         fontSize: 9,
@@ -241,7 +241,7 @@ class UsernameVerificationScreen extends StatelessWidget {
                       _backId.value == null ||
                       _selfieId.value == null) {
                     CustomSnackbar.showErrorToast(
-                      "Please upload all the documents",
+                      "please_upload_all_documents".tr,
                     );
                     return;
                   }
@@ -254,7 +254,7 @@ class UsernameVerificationScreen extends StatelessWidget {
                 isLoading: userController.isloading,
                 borderRadius: BorderRadius.circular(15),
                 child: Text(
-                  "Submit",
+                  "submit".tr,
                   style: GoogleFonts.montserrat(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -276,7 +276,7 @@ class UsernameVerificationScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Username Verification",
+        "username_verification".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

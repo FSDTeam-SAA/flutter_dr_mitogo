@@ -97,18 +97,15 @@ class EditProfileScreen extends StatelessWidget {
                 ),
                 SizedBox(height: Get.height * 0.05),
                 Text(
-                  "Edit Your Profile",
+                  "edit_your_profile".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
-                  "Put the information to complete your profile",
-                  style: Get.textTheme.bodySmall,
-                ),
+                Text("put_info_to_complete".tr, style: Get.textTheme.bodySmall),
                 SizedBox(height: Get.height * 0.05),
-                Text("Display Name", style: Get.textTheme.bodyMedium),
+                Text("display_name".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: displayNameController,
@@ -120,7 +117,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text("Phone Number", style: Get.textTheme.bodyMedium),
+                Text("phone_number".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: phoneNumberController,
@@ -132,11 +129,11 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text("Email", style: Get.textTheme.bodyMedium),
+                Text("email".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: emailController,
-                  hintText: "Enter Email",
+                  hintText: "enter_email",
                   bgColor: const Color(0xFFF7F7F9),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -145,7 +142,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 15),
-                Text("Education", style: Get.textTheme.bodyMedium),
+                Text("education".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: educationController,
@@ -157,7 +154,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text("Work", style: Get.textTheme.bodyMedium),
+                Text("work".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: workController,
@@ -169,7 +166,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text("Biography", style: Get.textTheme.bodyMedium),
+                Text("biography".tr, style: Get.textTheme.bodyMedium),
                 const SizedBox(height: 5),
                 CustomTextField(
                   controller: bioController,
@@ -212,7 +209,7 @@ class EditProfileScreen extends StatelessWidget {
                   },
                   isLoading: userController.isloading,
                   child: Text(
-                    "Save Changes",
+                    "save_changes".tr,
                     style: Get.textTheme.bodyMedium!.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,

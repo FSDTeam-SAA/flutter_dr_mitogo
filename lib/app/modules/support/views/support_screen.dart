@@ -32,18 +32,18 @@ class SupportScreen extends StatelessWidget {
           child: StaggeredColumnAnimation(
             children: [
               SizedBox(height: Get.height * 0.02),
-              Text("Topic", style: Get.textTheme.bodyMedium),
+              Text("topic".tr, style: Get.textTheme.bodyMedium),
               const SizedBox(height: 5),
               CustomTextField(
-                hintText: "Enter topic name",
+                hintText: "enter_topic_name".tr,
                 controller: subjectController,
                 // controller: controller.emailController,
               ),
               const SizedBox(height: 25),
-              Text("Message", style: Get.textTheme.bodyMedium),
+              Text("message".tr, style: Get.textTheme.bodyMedium),
               const SizedBox(height: 5),
               CustomTextField(
-                hintText: "Enter your message",
+                hintText: "enter_your_message".tr,
                 minLines: 5,
                 maxLines: 6,
                 controller: messageController,
@@ -77,13 +77,13 @@ class SupportScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Browse images or drop here",
+                            "browse_images_or_drop_here".tr,
                             style: Get.textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           Text(
-                            "JPG, PNG , file size no more than 25MB",
+                            "jpg_png_max_25mb".tr,
                             style: Get.textTheme.bodyMedium!.copyWith(
                               color: Colors.grey,
                               fontSize: 10,
@@ -103,26 +103,22 @@ class SupportScreen extends StatelessWidget {
                 ontap: () async {
                   if (selectedMedias.isEmpty) {
                     CustomSnackbar.showErrorToast(
-                      "Please select at least one image",
+                      "please_select_at_least_one_image".tr,
                     );
                     return;
                   }
                   if (selectedMedias.length > 5) {
                     CustomSnackbar.showErrorToast(
-                      "You can select maximum 5 images",
+                      "you_can_select_maximum_5_images".tr,
                     );
                     return;
                   }
                   if (subjectController.text.isEmpty) {
-                    CustomSnackbar.showErrorToast(
-                      "Please enter a subject",
-                    );
+                    CustomSnackbar.showErrorToast("please_enter_a_subject".tr);
                     return;
                   }
                   if (messageController.text.isEmpty) {
-                    CustomSnackbar.showErrorToast(
-                      "Please enter a message",
-                    );
+                    CustomSnackbar.showErrorToast("please_enter_a_message".tr);
                     return;
                   }
                   await userController.createTicket(
@@ -133,7 +129,7 @@ class SupportScreen extends StatelessWidget {
                 },
                 isLoading: userController.isloading,
                 child: Text(
-                  "Create",
+                  "create".tr,
                   style: GoogleFonts.montserrat(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -211,7 +207,7 @@ class SupportScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Get Help",
+        "get_help".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

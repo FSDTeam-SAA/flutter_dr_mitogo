@@ -55,7 +55,7 @@ class _BlockedUsersScreenState extends State<BlockedUsersScreen> {
                     return SizedBox(
                       height: Get.height * 0.6,
                       width: Get.width,
-                      child: Center(child: Text("No blocked users")),
+                      child: Center(child: Text("no_blocked_users".tr)),
                     );
                   }
                   return ListView.builder(
@@ -122,7 +122,7 @@ class _BlockedUsersScreenState extends State<BlockedUsersScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Blocked",
+        "blocked".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

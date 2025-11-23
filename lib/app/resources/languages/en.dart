@@ -197,6 +197,35 @@ const Map<String, String> enUS = {
   'complete_profile_description':
       'Welcome! Please enter information below\nto create a new account.',
   'no_posts_found_profile': 'No posts found',
+  'saved_posts': 'Saved Posts',
+  'about': 'About',
+
+  'inbox_notification': 'Inbox Notification',
+  'vibrate': 'Vibrate',
+  'sound': 'Sound',
+
+  'posts': 'Posts',
+  'photos': 'Photos',
+  'videos': 'Videos',
+  'music': 'Music',
+  'add_photo': 'Add Photo',
+  'add_video': 'Add Video',
+  'empty_photo_post': 'Empty Photo Post',
+  'empty_video_post': 'Empty Video Post',
+  'empty_music_post': 'Empty Music Post',
+  'edit_profile_info': 'Edit Profile Info',
+  'unfollow': 'Unfollow',
+  'work': 'Work',
+  'education': 'Education',
+  'follower': 'Follower',
+  'edit_your_profile': 'Edit Your Profile',
+  'put_info_to_complete': 'Put the information to complete your profile',
+  'display_name': 'Display Name',
+  'phone_number': 'Phone Number',
+  'biography': 'Biography',
+  'save_changes': 'Save Changes',
+  'welcome_complete_profile':
+      'Welcome! Please enter information below\nto create a new account.',
 
   // ========== Search ==========
   'no_accounts_found': 'No accounts found',
@@ -210,6 +239,27 @@ const Map<String, String> enUS = {
   'follow': 'Follow',
   'following': 'Following',
   'trending': '#@index trending',
+
+  // Get help
+  'get_help': 'Get Help',
+  'message': 'Message',
+  'enter_your_message': 'Enter your message',
+  'browse_images_or_drop_here': 'Browse images or drop here',
+  'jpg_png_max_25mb': 'JPG, PNG , file size no more than 25MB',
+  'please_select_at_least_one_image': 'Please select at least one image',
+  'you_can_select_maximum_5_images': 'You can select maximum 5 images',
+  'please_enter_a_subject': 'Please enter a subject',
+  'please_enter_a_message': 'Please enter a message',
+
+  // Username verfication
+  'username_verification': 'Username Verification',
+  'full_legal_name': 'Full Legal Name',
+  'enter_your_full_legal_name': 'Enter your full legal name',
+  'front_id': 'Front ID',
+  'back_id': 'Back ID',
+  'selfie_id': 'Selfie ID',
+  'submit': 'Submit',
+  'please_upload_all_documents': 'Please upload all the documents',
 
   // ========== Comments ==========
   'no_comments_yet': 'No comments yet',
