@@ -55,7 +55,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   return SizedBox(
                     height: Get.height * 0.65,
                     width: Get.width,
-                    child: const Center(child: Text("No Notifications")),
+                    child: Center(child: Text("no_notifications".tr)),
                   );
                 }
                 return ListView.builder(
@@ -177,7 +177,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Notification",
+        "notifications".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

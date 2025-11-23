@@ -77,6 +77,12 @@ const Map<String, String> ptBR = {
   'no_posts_found': 'Nenhuma postagem encontrada',
   'no_posts_available': 'Nenhuma postagem disponível',
 
+  'reply': 'Responder',
+  'view_replies': 'Ver @count respostas',
+  'view_more_replies': 'Ver mais respostas',
+  'view_additional_replies': 'Ver mais @count respostas',
+  'hide_replies': 'Ocultar respostas',
+
   // ========== Criar postagem ==========
   'create_post': 'Criar postagem',
   'post': 'Postar',
@@ -136,6 +142,22 @@ const Map<String, String> ptBR = {
   'audio_save_failed': 'Falha ao salvar áudio',
   'file_saved': 'Arquivo salvo',
   'file_save_failed': 'Falha ao salvar arquivo',
+  'copy': 'Copiar',
+  'block': 'Bloquear',
+  'quote': 'Citar',
+  'unknown_user': 'Usuário desconhecido',
+
+  'report_no_reason': 'Sem motivo',
+  'report_not_interested': 'Não tenho interesse nessa pessoa',
+  'report_fake_spam': 'Perfil falso, spam ou golpista',
+  'report_inappropriate': 'Conteúdo inadequado',
+  'report_underage': 'Menor de idade',
+  'report_off_app_behavior': 'Comportamento fora do app',
+  'report_in_danger': 'Alguém está em perigo',
+  'report_other': 'Outro',
+
+  'share': 'Compartilhar',
+  'quick_actions': 'Ações rápidas',
 
   // ========== Notificações ==========
   'no_notifications': 'Nenhuma notificação',
@@ -153,6 +175,16 @@ const Map<String, String> ptBR = {
 
   // ========== Pesquisa ==========
   'no_accounts_found': 'Nenhuma conta encontrada',
+
+  'search_people': 'Pesquisar pessoas',
+  'all': 'Todos',
+  'top_accounts': 'Contas em destaque',
+  'recent': 'Recentes',
+  'tags': 'Tags',
+  'followers': 'seguidores',
+  'follow': 'Seguir',
+  'following': 'Seguindo',
+  'trending': 'em alta',
 
   // ========== Comentários ==========
   'no_comments_yet': 'Nenhum comentário ainda',

@@ -74,7 +74,13 @@ const Map<String, String> enUS = {
   // ========== Home ==========
   'welcome_back_user': 'Welcome back,',
   'no_posts_found': 'No posts found',
+
   // 'no_posts_available': 'No posts available',
+  'reply': 'Reply',
+  'view_replies': 'View @count replies',
+  'view_more_replies': 'View more replies',
+  'view_additional_replies': 'View @count more replies',
+  'hide_replies': 'Hide replies',
 
   // ========== Create Post ==========
   'create_post': 'Create Post',
@@ -135,6 +141,23 @@ const Map<String, String> enUS = {
   'audio_save_failed': 'Failed to save audio',
   'file_saved': 'File saved',
   'file_save_failed': 'Failed to save file',
+  'copy': 'Copy',
+  'block': 'Block',
+  'quote': 'Quote',
+  'unknown_user': 'Unknown User',
+
+  'share': 'Share',
+  'quick_actions': 'Quick Actions',
+
+  // report
+  'report_no_reason': 'No reason',
+  'report_not_interested': "I'm not interested in this person",
+  'report_fake_spam': 'Profile is fake, spam, or scammer',
+  'report_inappropriate': 'Inappropriate content',
+  'report_underage': 'Underage or minor',
+  'report_off_app_behavior': 'Off-app behavior',
+  'report_in_danger': 'Someone is in danger',
+  'report_other': 'Other',
 
   // ========== Notifications ==========
   'no_notifications': 'No Notifications',
@@ -152,6 +175,16 @@ const Map<String, String> enUS = {
 
   // ========== Search ==========
   'no_accounts_found': 'No accounts found',
+
+  'search_people': 'Search People',
+  'all': 'All',
+  'top_accounts': 'Top Accounts',
+  'recent': 'Recent',
+  'tags': 'Tags',
+  'followers': '@flowercount followers',
+  'follow': 'Follow',
+  'following': 'Following',
+  'trending': '#@index trending',
 
   // ========== Comments ==========
   'no_comments_yet': 'No comments yet',

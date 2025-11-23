@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen>
 
   final RxList<UserModel> allAccounts = <UserModel>[].obs;
 
-  final tabs = ['All', 'Top Accounts', 'Recent', 'Tags'];
+  final tabs = ['all'.tr, 'top_accounts'.tr, 'recent'.tr, 'tags'.tr];
 
   late TabController _tabController;
   String defaultImage =
@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen>
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
-              hintText: "Search",
+              hintText: "search".tr,
               prefixIcon: Icons.search,
               onChanged: (value) {
                 searchText.value = value;
@@ -130,7 +130,7 @@ class _SearchScreenState extends State<SearchScreen>
                 return SizedBox(
                   height: Get.height * 0.5,
                   width: Get.width,
-                  child: const Center(child: Text("No accounts found")),
+                  child: Center(child: Text("no_accounts_found".tr)),
                 );
               }
               return ListView.builder(
@@ -226,8 +226,8 @@ class _SearchScreenState extends State<SearchScreen>
           fontSize: 15,
         ),
         tabs: [
-          Tab(text: 'All'),
-          Tab(text: 'Top Accounts'),
+          Tab(text: 'all'.tr),
+          Tab(text: 'top_accounts'.tr),
           // Tab(text: 'Recent'),
           // Tab(text: 'Tags'),
         ],
@@ -240,7 +240,7 @@ class _SearchScreenState extends State<SearchScreen>
       backgroundColor: Color(0xFFFFE7E6),
       centerTitle: true,
       title: Text(
-        "Search People",
+        "search_people".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(
@@ -306,7 +306,10 @@ class _SearchScreenState extends State<SearchScreen>
                 Text(user.displayName ?? "", style: Get.textTheme.bodyMedium),
                 Obx(
                   () => Text(
-                    "${user.followerCount?.value} followers",
+                    'followers'.trParams({
+                      'flowercount': '${user.followerCount?.value}',
+                    }),
+                    // "${user.followerCount?.value} followers",
                     style: Get.textTheme.bodySmall,
                   ),
                 ),
@@ -341,7 +344,7 @@ class _SearchScreenState extends State<SearchScreen>
                           isFollowing ? Colors.grey : AppColors.primaryColor,
                       height: 32,
                       child: Text(
-                        isFollowing ? "Following" : "Follow",
+                        isFollowing ? "following".tr : "follow".tr,
                         style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontSize: 12,
@@ -356,7 +359,8 @@ class _SearchScreenState extends State<SearchScreen>
             const Spacer(),
             if (type == "top accounts")
               Text(
-                "#${index + 1} trending",
+                'trending'.trParams({'index': '${index + 1}'}),
+                // "#${index + 1} trending",
                 style: GoogleFonts.montserrat(
                   color: Color.fromRGBO(251, 201, 5, 1),
                   fontSize: 9,

@@ -74,6 +74,12 @@ const Map<String, String> arAR = {
   'no_posts_found': 'لم يتم العثور على منشورات',
   'no_posts_available': 'لا توجد منشورات متاحة',
 
+  'reply': 'رد',
+  'view_replies': 'عرض @count ردود',
+  'view_more_replies': 'عرض المزيد من الردود',
+  'view_additional_replies': 'عرض @count ردود إضافية',
+  'hide_replies': 'إخفاء الردود',
+
   // ========== إنشاء منشور ==========
   'create_post': 'إنشاء منشور',
   'post': 'منشور',
@@ -133,6 +139,22 @@ const Map<String, String> arAR = {
   'audio_save_failed': 'فشل حفظ الصوت',
   'file_saved': 'تم حفظ الملف',
   'file_save_failed': 'فشل حفظ الملف',
+  'copy': 'نسخ',
+  'block': 'حظر',
+  'quote': 'اقتباس',
+  'unknown_user': 'مستخدم مجهول',
+
+  'report_no_reason': 'لا يوجد سبب',
+  'report_not_interested': 'أنا غير مهتم بهذا الشخص',
+  'report_fake_spam': 'الملف الشخصي مزيف أو سبام أو محتال',
+  'report_inappropriate': 'محتوى غير لائق',
+  'report_underage': 'قاصر أو دون السن القانوني',
+  'report_off_app_behavior': 'سلوك خارج التطبيق',
+  'report_in_danger': 'شخص ما في خطر',
+  'report_other': 'أخرى',
+
+  'share': 'مشاركة',
+  'quick_actions': 'إجراءات سريعة',
 
   // ========== الإشعارات ==========
   'no_notifications': 'لا توجد إشعارات',
@@ -150,6 +172,16 @@ const Map<String, String> arAR = {
 
   // ========== البحث ==========
   'no_accounts_found': 'لم يتم العثور على حسابات',
+
+  'search_people': 'البحث عن أشخاص',
+  'all': 'الكل',
+  'top_accounts': 'أفضل الحسابات',
+  'recent': 'الأحدث',
+  'tags': 'الوسوم',
+  'followers': 'متابعين',
+  'follow': 'متابعة',
+  'following': 'يتابع',
+  'trending': 'رائج',
 
   // ========== التعليقات ==========
   'no_comments_yet': 'لا توجد تعليقات بعد',

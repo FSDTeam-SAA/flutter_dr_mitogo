@@ -56,7 +56,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Share",
+                    "share".tr,
                     style: Get.textTheme.titleLarge?.copyWith(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -91,7 +91,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                   children: [
                     // Quick Actions
                     Text(
-                      "Quick Actions",
+                      "quick_actions".tr,
                       style: Get.textTheme.titleMedium?.copyWith(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -104,7 +104,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                       children: [
                         _buildQuickAction(
                           icon: Icons.copy,
-                          label: "Copy Link",
+                          label: "copy_link".tr,
                           color: Colors.blue,
                           onTap: () {
                             if (index == null) return;
@@ -128,7 +128,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                           final color =
                               isBookmarked ? Colors.orange : Colors.grey;
                           final label =
-                              isBookmarked ? "Unsave Post" : "Save Post";
+                              isBookmarked ? "unsave_post".tr : "save_post".tr;
                           return _buildQuickAction(
                             icon: icon,
                             label: label,
@@ -142,7 +142,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                         }),
                         _buildQuickAction(
                           icon: Icons.download,
-                          label: "Download",
+                          label: "download".tr,
                           color: Colors.green,
                           onTap: () async {
                             if (index == null) return;
@@ -155,7 +155,7 @@ Widget buildSocialShareSheet({required PostModel post, RxInt? index}) {
                         ),
                         _buildQuickAction(
                           icon: Icons.report_outlined,
-                          label: "Report",
+                          label: "report".tr,
                           color: Colors.red,
                           onTap: () {
                             Get.back();
@@ -329,8 +329,8 @@ void shareToApp(String appName) {
 void showReportDialog() {
   Get.dialog(
     AlertDialog(
-      title: Text("Report Post"),
-      content: Text("Why are you reporting this post?"),
+      title: Text("report_post".tr),
+      content: Text("why_reporting".tr),
       actions: [
         TextButton(onPressed: () => Get.back(), child: Text("Cancel")),
         TextButton(
@@ -338,7 +338,7 @@ void showReportDialog() {
             Get.back();
             Get.snackbar("Reported", "Post has been reported");
           },
-          child: Text("Report"),
+          child: Text("report".tr),
         ),
       ],
     ),
@@ -405,8 +405,8 @@ Future<void> downloadCurrentMedia(
         SnackBar(
           content: Text(
             (result != null && (result['isSuccess'] == true))
-                ? 'Image saved to gallery'
-                : 'Failed to save image',
+                ? 'image_saved'.tr
+                : 'image_save_failed'.tr,
           ),
         ),
       );
@@ -420,9 +420,7 @@ Future<void> downloadCurrentMedia(
       );
       final ok = result != null && (result['isSuccess'] == true);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(ok ? 'Video saved to gallery' : 'Failed to save video'),
-        ),
+        SnackBar(content: Text(ok ? 'video_saved'.tr : 'video_save_failed'.tr)),
       );
     } else if (mediaType == FileType.music) {
       // Download to temp file, then prompt user to pick destination
@@ -439,8 +437,8 @@ Future<void> downloadCurrentMedia(
         SnackBar(
           content: Text(
             (savedPath != null && savedPath.isNotEmpty)
-                ? 'Audio saved'
-                : 'Failed to save audio',
+                ? 'audio_saved'.tr
+                : 'audio_save_failed',
           ),
         ),
       );
@@ -458,8 +456,8 @@ Future<void> downloadCurrentMedia(
         SnackBar(
           content: Text(
             (savedPath != null && savedPath.isNotEmpty)
-                ? 'File saved'
-                : 'Failed to save file',
+                ? 'file_saved'.tr
+                : 'file_save_failed'.tr,
           ),
         ),
       );

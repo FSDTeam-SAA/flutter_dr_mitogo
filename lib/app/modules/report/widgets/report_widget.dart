@@ -39,14 +39,14 @@ class _ReportBottomSheetState extends State<ReportBottomSheet> {
   RxBool isLoading = false.obs;
 
   final List<String> _reportReasons = [
-    "No reason",
-    "I'm not interested in this person",
-    "Profile isDisliking fake, spam, or scammer",
-    "Inappropriate content",
-    "Underage or minor",
-    "Off-Hinge behavior",
-    "Someone is in danger",
-    "Other",
+  'report_no_reason'.tr,
+  'report_not_interested'.tr,
+  'report_fake_spam'.tr,
+  'report_inappropriate'.tr,
+  'report_underage'.tr,
+  'report_off_app_behavior'.tr,
+  'report_in_danger'.tr,
+  'report_other'.tr,
   ];
 
   void _reportUser(String reason) async {

@@ -155,7 +155,7 @@ PopupMenuButton buildOptionAboutPost({
       return [
         PopupMenuItem(
           child: Text(
-            "Report",
+            "report".tr,
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
@@ -178,7 +178,7 @@ PopupMenuButton buildOptionAboutPost({
         if (isMediaAvailable)
           PopupMenuItem(
             child: Text(
-              "Copy",
+              "copy".tr,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -197,7 +197,7 @@ PopupMenuButton buildOptionAboutPost({
         if (!isAuthor)
           PopupMenuItem(
             child: Text(
-              "Block",
+              "block".tr,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -212,7 +212,7 @@ PopupMenuButton buildOptionAboutPost({
         if (isAuthor)
           PopupMenuItem(
             child: Text(
-              "Delete",
+              "delete".tr,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -233,7 +233,7 @@ PopupMenuButton buildOptionAboutPost({
         PopupMenuItem(
           child: Obx(
             () => Text(
-              postModel.isBookmarked!.value ? "Unsave" : "Save",
+              postModel.isBookmarked!.value ? "unsave".tr : "save".tr,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -288,7 +288,7 @@ Future<dynamic> buildRetweetSheet(BuildContext context, PostModel postModel) {
               );
             }
             return ListTile(
-              leading: Text("Repost", style: Get.textTheme.bodyMedium),
+              leading: Text("repost".tr, style: Get.textTheme.bodyMedium),
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
               minTileHeight: 45,
               onTap: () async {
@@ -301,7 +301,7 @@ Future<dynamic> buildRetweetSheet(BuildContext context, PostModel postModel) {
             );
           }),
           ListTile(
-            leading: Text("Quote", style: Get.textTheme.bodyMedium),
+            leading: Text("quote".tr, style: Get.textTheme.bodyMedium),
             contentPadding: EdgeInsets.symmetric(horizontal: 10),
             minTileHeight: 45,
             onTap: () {
@@ -502,7 +502,7 @@ class AllPostViewersWidget extends StatelessWidget {
           if (snapshot.hasError ||
               !snapshot.hasData ||
               snapshot.data!.isEmpty) {
-            return const Center(child: Text("No viewers yet"));
+            return Center(child: Text("no_viewers_yet".tr));
           }
 
           final users = snapshot.data!;
@@ -519,7 +519,7 @@ class AllPostViewersWidget extends StatelessWidget {
                   backgroundImage: NetworkImage(viewer.avatarUrl ?? ""),
                 ),
                 title: Text(
-                  viewer.displayName ?? "Unknown User",
+                  viewer.displayName ?? "unknown_user".tr,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -570,7 +570,7 @@ class FollowFollowingViers extends StatelessWidget {
           if (snapshot.hasError ||
               !snapshot.hasData ||
               snapshot.data!.isEmpty) {
-            return const Center(child: Text("No viewers yet"));
+            return Center(child: Text("no_viewers_yet".tr));
           }
 
           final users = snapshot.data!;
@@ -585,7 +585,7 @@ class FollowFollowingViers extends StatelessWidget {
                   backgroundImage: NetworkImage(viewer.avatarUrl ?? ""),
                 ),
                 title: Text(
-                  viewer.displayName ?? "Unknown User",
+                  viewer.displayName ?? "unknown_user".tr,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,

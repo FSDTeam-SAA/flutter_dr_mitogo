@@ -77,6 +77,12 @@ const Map<String, String> esES = {
   'no_posts_found': 'No se encontraron publicaciones',
   'no_posts_available': 'No hay publicaciones disponibles',
 
+  'reply': 'Responder',
+  'view_replies': 'Ver @count respuestas',
+  'view_more_replies': 'Ver más respuestas',
+  'view_additional_replies': 'Ver @count respuestas más',
+  'hide_replies': 'Ocultar respuestas',
+
   // ========== Crear publicación ==========
   'create_post': 'Crear publicación',
   'post': 'Publicar',
@@ -136,6 +142,22 @@ const Map<String, String> esES = {
   'audio_save_failed': 'Error al guardar el audio',
   'file_saved': 'Archivo guardado',
   'file_save_failed': 'Error al guardar el archivo',
+  'copy': 'Copiar',
+  'block': 'Bloquear',
+  'quote': 'Citar',
+  'unknown_user': 'Usuario desconocido',
+
+  'report_no_reason': 'Sin motivo',
+  'report_not_interested': 'No me interesa esta persona',
+  'report_fake_spam': 'El perfil es falso, spam o estafador',
+  'report_inappropriate': 'Contenido inapropiado',
+  'report_underage': 'Menor de edad',
+  'report_off_app_behavior': 'Comportamiento fuera de la app',
+  'report_in_danger': 'Alguien está en peligro',
+  'report_other': 'Otro',
+
+  'share': 'Compartir',
+  'quick_actions': 'Acciones rápidas',
 
   // ========== Notificaciones ==========
   'no_notifications': 'Sin notificaciones',
@@ -153,6 +175,16 @@ const Map<String, String> esES = {
 
   // ========== Búsqueda ==========
   'no_accounts_found': 'No se encontraron cuentas',
+
+  'search_people': 'Buscar personas',
+  'all': 'Todos',
+  'top_accounts': 'Cuentas destacadas',
+  'recent': 'Recientes',
+  'tags': 'Etiquetas',
+  'followers': 'seguidores',
+  'follow': 'Seguir',
+  'following': 'Siguiendo',
+  'trending': 'tendencia',
 
   // ========== Comentarios ==========
   'no_comments_yet': 'Sin comentarios aún',

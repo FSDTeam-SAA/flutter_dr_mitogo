@@ -78,6 +78,12 @@ const Map<String, String> frFR = {
   'no_posts_found': 'Aucun message trouvé',
   'no_posts_available': 'Aucun message disponible',
 
+  'reply': 'Répondre',
+  'view_replies': 'Voir @count réponses',
+  'view_more_replies': 'Voir plus de réponses',
+  'view_additional_replies': 'Voir @count réponses supplémentaires',
+  'hide_replies': 'Masquer les réponses',
+
   // ========== Créer une publication ==========
   'create_post': 'Créer une publication',
   'post': 'Publier',
@@ -138,6 +144,22 @@ const Map<String, String> frFR = {
   'audio_save_failed': 'Échec de l\'enregistrement de l\'audio',
   'file_saved': 'Fichier enregistré',
   'file_save_failed': 'Échec de l\'enregistrement du fichier',
+  'copy': 'Copier',
+  'block': 'Bloquer',
+  'quote': 'Citer',
+  'unknown_user': 'Utilisateur inconnu',
+
+  'report_no_reason': 'Aucun motif',
+  'report_not_interested': 'Cette personne ne m’intéresse pas',
+  'report_fake_spam': 'Le profil est faux, spam ou arnaqueur',
+  'report_inappropriate': 'Contenu inapproprié',
+  'report_underage': 'Mineur',
+  'report_off_app_behavior': 'Comportement hors application',
+  'report_in_danger': 'Quelqu’un est en danger',
+  'report_other': 'Autre',
+
+  'share': 'Partager',
+  'quick_actions': 'Actions rapides',
 
   // ========== Notifications ==========
   'no_notifications': 'Aucune notification',
@@ -155,6 +177,15 @@ const Map<String, String> frFR = {
 
   // ========== Recherche ==========
   'no_accounts_found': 'Aucun compte trouvé',
+  'search_people': 'Rechercher des personnes',
+  'all': 'Tous',
+  'top_accounts': 'Comptes populaires',
+  'recent': 'Récents',
+  'tags': 'Tags',
+  'followers': 'abonnés',
+  'follow': 'Suivre',
+  'following': 'Abonné',
+  'trending': 'tendance',
 
   // ========== Commentaires ==========
   'no_comments_yet': 'Pas encore de commentaires',

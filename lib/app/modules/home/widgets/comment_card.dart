@@ -144,7 +144,7 @@ class CommentCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             color: Colors.transparent,
             child: Text(
-              "Reply",
+              "reply".tr,
               style: GoogleFonts.montserrat(
                 fontSize: 13,
                 color: const Color.fromARGB(255, 65, 6, 5).withOpacity(0.75),
@@ -214,7 +214,10 @@ class CommentCard extends StatelessWidget {
         child: Row(
           children: [
             const Icon(Icons.keyboard_arrow_down_outlined, size: 15),
-            Text("View $replyCount replies", style: _actionTextStyle()),
+            Text(
+              'view_replies'.trParams({'count': '$replyCount'}),
+              style: _actionTextStyle(),
+            ),
           ],
         ),
       ),
@@ -226,7 +229,7 @@ class CommentCard extends StatelessWidget {
       onTap: _loadMoreReplies,
       child: Padding(
         padding: const EdgeInsets.only(top: 5),
-        child: Text("View more replies", style: _actionTextStyle()),
+        child: Text("view_more_replies".tr, style: _actionTextStyle()),
       ),
     );
   }
@@ -239,7 +242,7 @@ class CommentCard extends StatelessWidget {
         child: Row(
           children: [
             const Icon(Icons.keyboard_arrow_up_outlined, size: 15),
-            Text("Hide replies", style: _actionTextStyle()),
+            Text("hide_replies".tr, style: _actionTextStyle()),
           ],
         ),
       ),
@@ -303,7 +306,10 @@ class CommentCard extends StatelessWidget {
       onTap: _showMoreReplies,
       child: Padding(
         padding: const EdgeInsets.only(top: 5),
-        child: Text("View $toShow more replies", style: _actionTextStyle()),
+        child: Text(
+          'view_additional_replies'.trParams({'count': '$toShow'}),
+          style: _actionTextStyle(),
+        ),
       ),
     );
   }
