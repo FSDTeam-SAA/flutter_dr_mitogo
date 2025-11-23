@@ -14,7 +14,8 @@ const Map<String, String> esES = {
 
   // ========== Autenticación - Iniciar sesión ==========
   'welcome_back': '¡Hola! Bienvenido de vuelta',
-  'welcome_description': '¡Bienvenido! Por favor ingresa tu información a continuación para comenzar.',
+  'welcome_description':
+      '¡Bienvenido! Por favor ingresa tu información a continuación para comenzar.',
   'email': 'Correo electrónico',
   'password': 'Contraseña',
   'enter_email': 'Ingresa tu correo',
@@ -28,7 +29,8 @@ const Map<String, String> esES = {
 
   // ========== Autenticación - Registro ==========
   'sign_up_title': 'Registrarse',
-  'sign_up_description': '¡Bienvenido! Por favor ingresa tu información a continuación para registrarte',
+  'sign_up_description':
+      '¡Bienvenido! Por favor ingresa tu información a continuación para registrarte',
   'name': 'Nombre',
   'enter_name': 'Ingresa tu nombre',
   'create_account': 'Crear cuenta',
@@ -52,7 +54,8 @@ const Map<String, String> esES = {
 
   // ========== Configuración ==========
   'settings': 'Configuración',
-  'see_mature_content': 'Ver todo el contenido de la aplicación incluyendo contenido maduro',
+  'see_mature_content':
+      'Ver todo el contenido de la aplicación incluyendo contenido maduro',
   'ghost_mode': 'Modo fantasma',
   'profile': 'Perfil',
   'notification': 'Notificación',
@@ -77,10 +80,26 @@ const Map<String, String> esES = {
   // ========== Crear publicación ==========
   'create_post': 'Crear publicación',
   'post': 'Publicar',
+  'what_do_you_want_post': '¿Qué quieres publicar hoy?',
+  'post_as_anonymous': 'Publicar como anónimo',
+  'turn_on_verification_badge': 'Activar distintivo de verificación',
+  'turn_off_comments': 'Desactivar comentarios',
+  'show_post_time': 'Mostrar hora de publicación',
+  'create_poll_here': 'Crear una encuesta aquí',
   'please_add_description': 'Por favor agrega una descripción o multimedia',
   'write_something': 'Escribe algo...',
   'location': 'Ubicación',
   'enter_location': 'Ubicación',
+  'photo': 'Foto',
+  'video': 'Video',
+  'audio': 'Audio',
+
+  'ask_a_question': 'Haz una pregunta',
+  'options': 'Opciones',
+  'hint_option': 'Opción @index',
+  'add_option': 'Añadir opción',
+  'options_count': '@count opciones',
+  'create_poll': 'Crear encuesta',
 
   // ========== Chat ==========
   'no_message': 'Sin mensaje',
@@ -128,7 +147,8 @@ const Map<String, String> esES = {
   // ========== Perfil ==========
   'edit_profile': 'Editar perfil',
   'complete_profile': 'Completar perfil',
-  'complete_profile_description': '¡Bienvenido! Por favor ingresa tu información a continuación\npara crear una nueva cuenta.',
+  'complete_profile_description':
+      '¡Bienvenido! Por favor ingresa tu información a continuación\npara crear una nueva cuenta.',
   'no_posts_found_profile': 'No se encontraron publicaciones',
 
   // ========== Búsqueda ==========

@@ -14,7 +14,8 @@ const Map<String, String> ptBR = {
 
   // ========== Autenticação - Login ==========
   'welcome_back': 'Bem-vindo de volta',
-  'welcome_description': 'Bem-vindo! Por favor, insira suas informações abaixo para começar.',
+  'welcome_description':
+      'Bem-vindo! Por favor, insira suas informações abaixo para começar.',
   'email': 'Email',
   'password': 'Senha',
   'enter_email': 'Digite seu email',
@@ -28,7 +29,8 @@ const Map<String, String> ptBR = {
 
   // ========== Autenticação - Cadastro ==========
   'sign_up_title': 'Cadastrar',
-  'sign_up_description': 'Bem-vindo! Por favor, insira suas informações abaixo para se cadastrar',
+  'sign_up_description':
+      'Bem-vindo! Por favor, insira suas informações abaixo para se cadastrar',
   'name': 'Nome',
   'enter_name': 'Digite seu nome',
   'create_account': 'Criar conta',
@@ -52,7 +54,8 @@ const Map<String, String> ptBR = {
 
   // ========== Configurações ==========
   'settings': 'Configurações',
-  'see_mature_content': 'Ver todo o conteúdo do aplicativo incluindo conteúdo adulto',
+  'see_mature_content':
+      'Ver todo o conteúdo do aplicativo incluindo conteúdo adulto',
   'ghost_mode': 'Modo Fantasma',
   'profile': 'Perfil',
   'notification': 'Notificação',
@@ -77,10 +80,26 @@ const Map<String, String> ptBR = {
   // ========== Criar postagem ==========
   'create_post': 'Criar postagem',
   'post': 'Postar',
+  'what_do_you_want_post': 'O que você quer postar hoje?',
+  'post_as_anonymous': 'Postar como anônimo',
+  'turn_on_verification_badge': 'Ativar crachá de verificação',
+  'turn_off_comments': 'Desativar comentários',
+  'create_poll_here': 'Criar uma enquete aqui',
+  'show_post_time': 'Mostrar hora da postagem',
   'please_add_description': 'Por favor, adicione uma descrição ou mídia',
   'write_something': 'Escreva algo...',
   'location': 'Localização',
   'enter_location': 'Localização',
+  'photo': 'Foto',
+  'video': 'Vídeo',
+  'audio': 'Áudio',
+
+  'ask_a_question': 'Faça uma pergunta',
+  'options': 'Opções',
+  'hint_option': 'Opção @index',
+  'add_option': 'Adicionar opção',
+  'options_count': '@count opções',
+  'create_poll': 'Criar enquete',
 
   // ========== Chat ==========
   'no_message': 'Nenhuma mensagem',
@@ -128,7 +147,8 @@ const Map<String, String> ptBR = {
   // ========== Perfil ==========
   'edit_profile': 'Editar perfil',
   'complete_profile': 'Completar perfil',
-  'complete_profile_description': 'Bem-vindo! Por favor, insira suas informações abaixo\npara criar uma nova conta.',
+  'complete_profile_description':
+      'Bem-vindo! Por favor, insira suas informações abaixo\npara criar uma nova conta.',
   'no_posts_found_profile': 'Nenhuma postagem encontrada',
 
   // ========== Pesquisa ==========

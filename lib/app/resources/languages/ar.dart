@@ -77,10 +77,26 @@ const Map<String, String> arAR = {
   // ========== إنشاء منشور ==========
   'create_post': 'إنشاء منشور',
   'post': 'منشور',
+  'what_do_you_want_post': 'ماذا تريد أن تنشر اليوم؟',
+  'post_as_anonymous': 'انشر كمجهول',
+  'turn_on_verification_badge': 'تفعيل شارة التحقق',
+  'turn_off_comments': 'تعطيل التعليقات',
+  'show_post_time': 'عرض وقت المنشور',
+  'create_poll_here': 'أنشئ استطلاع رأي هنا',
   'please_add_description': 'يرجى إضافة وصف أو وسائط',
   'write_something': 'اكتب شيئاً...',
   'location': 'الموقع',
   'enter_location': 'الموقع',
+  'photo': 'صورة',
+  'video': 'فيديو',
+  'audio': 'صوت',
+
+  'ask_a_question': 'اطرح سؤالاً',
+  'options': 'الخيارات',
+  'hint_option': 'الخيار @index',
+  'add_option': 'إضافة خيار',
+  'options_count': '@count خيارات',
+  'create_poll': 'إنشاء استطلاع رأي',
 
   // ========== الدردشة ==========
   'no_message': 'لا توجد رسالة',

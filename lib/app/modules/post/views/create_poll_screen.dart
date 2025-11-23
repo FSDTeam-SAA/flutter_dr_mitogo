@@ -28,13 +28,13 @@ class CreatePollScreen extends StatelessWidget {
             children: [
               SizedBox(height: Get.height * 0.15),
               Text(
-                "Ask a Question",
+                "ask_a_question".tr,
                 style: Get.textTheme.labelLarge!.copyWith(fontSize: 15),
               ),
               SizedBox(height: Get.height * 0.02),
               CustomTextField(
                 controller: controller.questionController,
-                label: "Write something...",
+                label: "write_something".tr,
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 bgColor: const Color.fromRGBO(244, 244, 247, 1),
                 enabledBorder: OutlineInputBorder(
@@ -50,7 +50,7 @@ class CreatePollScreen extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.02),
               Text(
-                "Options",
+                "options".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
@@ -66,7 +66,9 @@ class CreatePollScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 15),
                       child: CustomTextField(
                         controller: controller.optionControllers[index],
-                        hintText: "Option ${index + 1}",
+                        hintText: 'hint_option'.trParams({
+                          'index': (index + 1).toString(),
+                        }),
                         bgColor: const Color(0xFFF7F7F9),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -118,7 +120,7 @@ class CreatePollScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            "Add Option",
+                            "add_option".tr,
                             style: GoogleFonts.montserrat(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
@@ -132,7 +134,9 @@ class CreatePollScreen extends StatelessWidget {
                   const SizedBox(width: 15),
                   Obx(
                     () => Text(
-                      "${controller.optionControllers.length} options",
+                      'options_count'.trParams({
+                        'count': '${controller.optionControllers.length}',
+                      }),
                       style: GoogleFonts.montserrat(
                         fontSize: 12,
                         color: Colors.grey[600],
@@ -156,7 +160,7 @@ class CreatePollScreen extends StatelessWidget {
                 isLoading: controller.isLoading,
                 borderRadius: BorderRadius.circular(15),
                 child: Text(
-                  "Create Poll",
+                  "create_poll".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
@@ -178,7 +182,7 @@ class CreatePollScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Create Poll",
+        "create_poll".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

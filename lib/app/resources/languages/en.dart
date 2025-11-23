@@ -14,7 +14,8 @@ const Map<String, String> enUS = {
 
   // ========== Authentication - Login ==========
   'welcome_back': 'Hey! Welcome Back',
-  'welcome_description': 'Welcome! Please enter your information below and get started.',
+  'welcome_description':
+      'Welcome! Please enter your information below and get started.',
   'email': 'Email',
   'password': 'Password',
   'enter_email': 'Enter Email',
@@ -52,7 +53,8 @@ const Map<String, String> enUS = {
 
   // ========== Settings ==========
   'settings': 'Settings',
-  'see_mature_content': 'See all app post\'s & contents including mature content',
+  'see_mature_content':
+      'See all app post\'s & contents including mature content',
   'ghost_mode': 'Ghost Mode',
   'profile': 'Profile',
   'notification': 'Notification',
@@ -77,10 +79,26 @@ const Map<String, String> enUS = {
   // ========== Create Post ==========
   'create_post': 'Create Post',
   'post': 'Post',
+  'what_do_you_want_post': 'What do you want to post today?',
+  'post_as_anonymous': 'Post as Anonymous',
+  'turn_on_verification_badge': 'Turn on Verification Badge',
+  'turn_off_comments': 'Turn off Comments',
+  'show_post_time': 'Show Post Time',
+  'create_poll_here': 'Create a poll here',
   'please_add_description': 'Please add a description or media',
   'write_something': 'Write something...',
   'location': 'Location',
   'enter_location': 'Location',
+  'photo': 'Photo',
+  'video': 'Video',
+  'audio': 'Audio',
+
+  'ask_a_question': 'Ask a Question',
+  'options': 'Options',
+  'hint_option': 'Option @index',
+  'add_option': 'Add Option',
+  'options_count': '@count options',
+  'create_poll': 'Create Poll',
 
   // ========== Chat ==========
   'no_message': 'No Message',
@@ -128,7 +146,8 @@ const Map<String, String> enUS = {
   // ========== Profile ==========
   'edit_profile': 'Edit Profile',
   'complete_profile': 'Complete profile',
-  'complete_profile_description': 'Welcome! Please enter information below\nto create a new account.',
+  'complete_profile_description':
+      'Welcome! Please enter information below\nto create a new account.',
   'no_posts_found_profile': 'No posts found',
 
   // ========== Search ==========

@@ -14,7 +14,8 @@ const Map<String, String> frFR = {
 
   // ========== Authentification - Connexion ==========
   'welcome_back': 'Bienvenue de retour',
-  'welcome_description': 'Bienvenue ! Veuillez entrer vos informations ci-dessous pour commencer.',
+  'welcome_description':
+      'Bienvenue ! Veuillez entrer vos informations ci-dessous pour commencer.',
   'email': 'E-mail',
   'password': 'Mot de passe',
   'enter_email': 'Entrez votre e-mail',
@@ -28,7 +29,8 @@ const Map<String, String> frFR = {
 
   // ========== Authentification - Inscription ==========
   'sign_up_title': 'S\'inscrire',
-  'sign_up_description': 'Bienvenue ! Veuillez entrer vos informations ci-dessous pour vous inscrire',
+  'sign_up_description':
+      'Bienvenue ! Veuillez entrer vos informations ci-dessous pour vous inscrire',
   'name': 'Nom',
   'enter_name': 'Entrez votre nom',
   'create_account': 'Créer un compte',
@@ -52,7 +54,8 @@ const Map<String, String> frFR = {
 
   // ========== Paramètres ==========
   'settings': 'Paramètres',
-  'see_mature_content': 'Voir tout le contenu de l\'application y compris le contenu mature',
+  'see_mature_content':
+      'Voir tout le contenu de l\'application y compris le contenu mature',
   'ghost_mode': 'Mode fantôme',
   'profile': 'Profil',
   'notification': 'Notification',
@@ -67,7 +70,8 @@ const Map<String, String> frFR = {
   'are_you_sure_delete': 'Êtes-vous sûr de vouloir supprimer votre compte ?',
   'delete': 'Supprimer',
   'cancel': 'Annuler',
-  'you_must_be_18': 'Vous devez avoir au moins 18 ans pour activer cette fonction',
+  'you_must_be_18':
+      'Vous devez avoir au moins 18 ans pour activer cette fonction',
 
   // ========== Accueil ==========
   'welcome_back_user': 'Bienvenue de retour,',
@@ -77,10 +81,27 @@ const Map<String, String> frFR = {
   // ========== Créer une publication ==========
   'create_post': 'Créer une publication',
   'post': 'Publier',
-  'please_add_description': 'Veuillez ajouter une description ou du contenu multimédia',
+  'what_do_you_want_post': 'Que voulez-vous publier aujourd\'hui ?',
+  'post_as_anonymous': 'Publier de manière anonyme',
+  'turn_on_verification_badge': 'Activer le badge de vérification',
+  'turn_off_comments': 'Désactiver les commentaires',
+  'show_post_time': 'Afficher l\'heure de publication',
+  'create_poll_here': 'Créer un sondage ici',
+  'please_add_description':
+      'Veuillez ajouter une description ou du contenu multimédia',
   'write_something': 'Écrivez quelque chose...',
   'location': 'Localisation',
   'enter_location': 'Localisation',
+  'photo': 'Photo',
+  'video': 'Vidéo',
+  'audio': 'Audio',
+
+  'ask_a_question': 'Poser une question',
+  'options': 'Options',
+  'hint_option': 'Option @index',
+  'add_option': 'Ajouter une option',
+  'options_count': '@count@ options',
+  'create_poll': 'Créer un sondage',
 
   // ========== Chat ==========
   'no_message': 'Aucun message',
@@ -128,7 +149,8 @@ const Map<String, String> frFR = {
   // ========== Profil ==========
   'edit_profile': 'Modifier le profil',
   'complete_profile': 'Compléter le profil',
-  'complete_profile_description': 'Bienvenue ! Veuillez entrer vos informations ci-dessous\npour créer un nouveau compte.',
+  'complete_profile_description':
+      'Bienvenue ! Veuillez entrer vos informations ci-dessous\npour créer un nouveau compte.',
   'no_posts_found_profile': 'Aucun message trouvé',
 
   // ========== Recherche ==========
@@ -146,7 +168,8 @@ const Map<String, String> frFR = {
   'you_can': '✅ Vous pouvez :',
   'you_cant': '🚫 Vous ne pouvez pas',
   'how_to_unlock': '📝 Comment déverrouiller :',
-  'write_anonymous_posts': '• Écrire des publications anonymes (texte uniquement)',
+  'write_anonymous_posts':
+      '• Écrire des publications anonymes (texte uniquement)',
   'share_secrets': '• Partager des secrets, des pensées et des émotions',
   'add_photos': '• Partager des confessions avec des photos',
   'add_videos': '• Partager des confessions avec des vidéos',

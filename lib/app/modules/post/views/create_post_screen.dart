@@ -46,34 +46,34 @@ class CreatePostScreen extends StatelessWidget {
             children: [
               SizedBox(height: Get.height * 0.02),
               Text(
-                "What do you want to post today?",
+                "what_do_you_want_post".tr,
                 style: Get.textTheme.labelLarge!.copyWith(fontSize: 15),
               ),
               SizedBox(height: Get.height * 0.03),
               if (anonymous != null || anonymous == true)
                 _buildPostFeatureCard(
-                  title: "Post as anoynmous",
+                  title: "post_as_anonymous".tr,
                   value: controller.isAnonymous,
                   onChanged: (value) {
                     controller.isAnonymous.value = value;
                   },
                 ),
               _buildPostFeatureCard(
-                title: "Turn on Verification Badge",
+                title: "turn_on_verification_badge".tr,
                 value: controller.isVerificationBadge,
                 onChanged: (value) {
                   controller.isVerificationBadge.value = value;
                 },
               ),
               _buildPostFeatureCard(
-                title: "Turn off Comments",
+                title: "turn_off_comments".tr,
                 value: controller.isComments,
                 onChanged: (value) {
                   controller.isComments.value = value;
                 },
               ),
               _buildPostFeatureCard(
-                title: "Show Post Time",
+                title: "show_post_time".tr,
                 value: controller.showPostTime,
                 onChanged: (value) {
                   controller.showPostTime.value = value;
@@ -185,7 +185,7 @@ class CreatePostScreen extends StatelessWidget {
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     contentPadding: const EdgeInsets.all(15),
-                    hintText: "Location",
+                    hintText: "location".tr,
                     hintStyle: Get.textTheme.bodyMedium!.copyWith(
                       color: Colors.grey,
                     ),
@@ -230,7 +230,7 @@ class CreatePostScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        "Create a poll here",
+                        "create_poll_here".tr,
                         style: Get.textTheme.bodyMedium!.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
@@ -247,7 +247,7 @@ class CreatePostScreen extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.03),
               CustomTextField(
-                label: "Write something...",
+                label: "write_something".tr,
                 controller: controller.descriptionController,
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 bgColor: Color.fromRGBO(244, 244, 247, 1),
@@ -269,7 +269,7 @@ class CreatePostScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildMediaCard(
-                    title: "Photo",
+                    title: "photo".tr,
                     icon: FontAwesomeIcons.solidImage,
                     onTap: () async {
                       List<File>? images = await pickMultipleImages();
@@ -281,7 +281,7 @@ class CreatePostScreen extends StatelessWidget {
                     iconSize: 18,
                   ),
                   _buildMediaCard(
-                    title: "Video",
+                    title: "video".tr,
                     icon: FontAwesomeIcons.video,
                     onTap: () async {
                       File? video = await pickVideo();
@@ -302,7 +302,7 @@ class CreatePostScreen extends StatelessWidget {
                     iconSize: 18,
                   ),
                   _buildMediaCard(
-                    title: "Audio",
+                    title: "audio".tr,
                     icon: FontAwesomeIcons.fileAudio,
                     onTap: () async {
                       File? audio = await pickMp3Audio();
@@ -322,7 +322,7 @@ class CreatePostScreen extends StatelessWidget {
                   if (controller.descriptionController.text.isEmpty &&
                       controller.selectedMedias.isEmpty) {
                     CustomSnackbar.showErrorToast(
-                      "Please add a description or media",
+                      "please_add_description".tr,
                     );
                     return;
                   }
@@ -337,7 +337,7 @@ class CreatePostScreen extends StatelessWidget {
                 isLoading: controller.isloading,
                 borderRadius: BorderRadius.circular(15),
                 child: Text(
-                  "Post",
+                  "post".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
@@ -525,7 +525,7 @@ class CreatePostScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        title ?? "Create Post",
+        title ?? "create_post".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(
