@@ -72,7 +72,7 @@ const Map<String, String> enUS = {
   // ========== Home ==========
   'welcome_back_user': 'Welcome back,',
   'no_posts_found': 'No posts found',
-  'no_posts_available': 'No posts available',
+  // 'no_posts_available': 'No posts available',
 
   // ========== Create Post ==========
   'create_post': 'Create Post',

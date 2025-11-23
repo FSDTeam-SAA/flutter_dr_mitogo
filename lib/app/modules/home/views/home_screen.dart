@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: Get.width,
                       child: Center(
                         child: Text(
-                          "No posts found",
+                          "no_posts_found".tr,
                           style: Get.textTheme.bodyMedium,
                         ),
                       ),
@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Welcome back,",
+                "welcome_back_user,".tr,
                 style: GoogleFonts.montserrat(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
