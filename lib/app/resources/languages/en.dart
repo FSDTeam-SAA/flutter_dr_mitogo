@@ -1,0 +1,171 @@
+const Map<String, String> enUS = {
+  // ========== Language Settings ==========
+  'language_settings': 'Language Settings',
+  'select_language': 'Select Language',
+  'current_language': 'Current Language',
+  'language_changed': 'Language changed successfully',
+
+  // ========== Common ==========
+  'english': 'English',
+  'spanish': 'Español',
+  'french': 'Français',
+  'arabic': 'Arabic',
+  'portuguese': 'Português',
+
+  // ========== Authentication - Login ==========
+  'welcome_back': 'Hey! Welcome Back',
+  'welcome_description': 'Welcome! Please enter your information below and get started.',
+  'email': 'Email',
+  'password': 'Password',
+  'enter_email': 'Enter Email',
+  'enter_password': 'Enter Password',
+  'confirm_password': 'Confirm Password',
+  'enter_confirm_password': 'Enter Confirm Password',
+  'forgot_password': 'Forgot Password?',
+  'login': 'Login',
+  'dont_have_account': "Don't have an account?",
+  'sign_up': 'Sign Up',
+
+  // ========== Authentication - Signup ==========
+  'sign_up_title': 'Sign Up',
+  'sign_up_description': 'Welcome! Please enter information below to Sign up',
+  'name': 'Name',
+  'enter_name': 'Enter Name',
+  'create_account': 'Create Account',
+  'already_have_account': 'Already have an account?',
+  'terms_and_conditions': 'Terms & Conditions',
+  'privacy_policy': 'Privacy Policy',
+  'i_agree': 'I agree to the',
+  'and': 'and',
+  'or_sign_up_with': 'Or sign up with',
+  'please_accept_terms': 'Please accept the terms and conditions',
+
+  // ========== Authentication - Password Reset ==========
+  'reset_password': 'Reset Password',
+  'enter_password_reset': 'Enter Password ',
+  'enter_password_reset_confirm': 'Enter Confirm Password',
+
+  // ========== Validation Errors ==========
+  'email_required': 'Email is required',
+  'email_invalid': 'Please enter a valid email address',
+  'email_disposable': 'Disposable email addresses are not allowed',
+
+  // ========== Settings ==========
+  'settings': 'Settings',
+  'see_mature_content': 'See all app post\'s & contents including mature content',
+  'ghost_mode': 'Ghost Mode',
+  'profile': 'Profile',
+  'notification': 'Notification',
+  'language': 'Language',
+  'invite': 'Invite',
+  'get_verified': 'Get Verified',
+  'blocked': 'Blocked',
+  'help': 'Help',
+  'logout': 'Logout',
+  'delete_account': 'Delete Account',
+  'are_you_sure_logout': 'Are you sure you want to logout?',
+  'are_you_sure_delete': 'Are you sure you want to delete your account?',
+  'delete': 'Delete',
+  'cancel': 'Cancel',
+  'you_must_be_18': 'You must be at least 18 years old to enable this feature',
+
+  // ========== Home ==========
+  'welcome_back_user': 'Welcome back,',
+  'no_posts_found': 'No posts found',
+  'no_posts_available': 'No posts available',
+
+  // ========== Create Post ==========
+  'create_post': 'Create Post',
+  'post': 'Post',
+  'please_add_description': 'Please add a description or media',
+  'write_something': 'Write something...',
+  'location': 'Location',
+  'enter_location': 'Location',
+
+  // ========== Chat ==========
+  'no_message': 'No Message',
+  'write_reply': 'Write your reply here..',
+  'search': 'Search',
+  'search_members': 'Search members...',
+  'chat_list': 'Chats',
+
+  // ========== Groups ==========
+  'no_groups_found': 'No groups found',
+  'no_members_found': 'No members found',
+  'enter_topic_name': 'Enter topic name',
+  'enter_description': 'Enter description',
+
+  // ========== Post/Share Options ==========
+  'no_viewers_yet': 'No viewers yet',
+  'link_copied': 'Link copied to clipboard',
+  'report_post': 'Report Post',
+  'why_reporting': 'Why are you reporting this post?',
+  'report': 'Report',
+  'download': 'Download',
+  'copy_link': 'Copy Link',
+  'downloading': 'Downloading...',
+  'download_failed': 'Download failed',
+  'save_post': 'Save Post',
+  'unsave_post': 'Unsave Post',
+  'unsave': 'Unsave',
+  'save': 'Save',
+  'image_saved': 'Image saved to gallery',
+  'image_save_failed': 'Failed to save image',
+  'video_saved': 'Video saved to gallery',
+  'video_save_failed': 'Failed to save video',
+  'audio_saved': 'Audio saved',
+  'audio_save_failed': 'Failed to save audio',
+  'file_saved': 'File saved',
+  'file_save_failed': 'Failed to save file',
+
+  // ========== Notifications ==========
+  'no_notifications': 'No Notifications',
+  'notifications': 'Notifications',
+  'notification_settings': 'Notification Settings',
+  'push_notifications': 'Push Notifications',
+  'real_time_updates': 'Real time Updates',
+
+  // ========== Profile ==========
+  'edit_profile': 'Edit Profile',
+  'complete_profile': 'Complete profile',
+  'complete_profile_description': 'Welcome! Please enter information below\nto create a new account.',
+  'no_posts_found_profile': 'No posts found',
+
+  // ========== Search ==========
+  'no_accounts_found': 'No accounts found',
+
+  // ========== Comments ==========
+  'no_comments_yet': 'No comments yet',
+  'write_comment': 'Write a comment here....',
+
+  // ========== Blocked Users ==========
+  'no_blocked_users': 'No blocked users',
+  'blocked_users': 'Blocked Users',
+
+  // ========== Level/Permissions ==========
+  'you_can': '✅ You can:',
+  'you_cant': '🚫 You can\'t',
+  'how_to_unlock': '📝 How to unlock:',
+  'write_anonymous_posts': '• Write anonymous posts (text only)',
+  'share_secrets': '• Share secrets, thoughts, and emotions',
+  'add_photos': '• Share confessions with photos',
+  'add_videos': '• Share confessions with videos',
+  'add_music': '• Add music to your posts',
+  'post_text_photos': '• Post text + add photos',
+  'express_yourself': '• Express yourself visually',
+  'be_active_days': '• Be active for 7 days',
+  'make_posts': '• OR make 90 posts',
+  'invite_friends': '• OR invite 60 friends',
+  'invite_friends_150': '• Invite 150 friends',
+  'make_posts_440': '• OR make 440 posts',
+  'invite_friends_550': '• Invite 550 friends',
+  'make_posts_2300': '• OR make 2,300 posts',
+
+  // ========== Other ==========
+  'story_created_successfully': 'Story created successfully!',
+  'story_deleted_successfully': 'Story deleted successfully!',
+  'report_submitted_successfully': 'Report submitted successfully',
+  'token_expired': 'Token has expired.',
+  'this_post_deleted': 'This post has been deleted',
+  'connection_error': 'Connection error',
+};

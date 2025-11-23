@@ -23,6 +23,8 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
+import '../controller/home_scroll_controller.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -36,13 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(HomeController());
   final postController = Get.put(PostController());
   RxBool isLoadingMore = false.obs;
-  ScrollController scrollController = ScrollController();
+  // ScrollController scrollController = ScrollController();
+  final scrollController = Get.find<HomeScrollController>().scrollController;
+
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
   final _viewStoryScreenController = Get.put(ViewStoryFullScreenController());
 
   @override
   void initState() {
     super.initState();
     WakelockPlus.enable();
+    Get.find<HomeScrollController>().refreshIndicatorKey = _refreshIndicatorKey;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       postController.startTimer();
       if (postController.posts.isEmpty) {
@@ -98,15 +106,16 @@ class _HomeScreenState extends State<HomeScreen> {
           width: Get.width,
           decoration: BoxDecoration(gradient: AppColors.bgGradient),
           child: RefreshIndicator(
+            key: _refreshIndicatorKey,
             color: const Color.fromARGB(255, 196, 109, 107),
             onRefresh: () async {
-              postController.getFeed(showLoader: false);
-              await _storyController.getUserPostedStories();
-              await _storyController.getAllStories();
+              await Get.find<PostController>().refreshHomeFeed(
+                showLoader: true,
+              );
             },
             child: ListView(
               controller: scrollController,
-              physics: BouncingScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               children: [
                 SizedBox(height: Get.height * 0.03),
                 buildHeader(),

@@ -1,30 +1,66 @@
-import 'package:casarancha/app/controller/user_controller.dart';
-import 'package:casarancha/app/modules/chat/views/chat_list_screen.dart';
-import 'package:casarancha/app/modules/group/views/group_list_screen.dart';
-import 'package:casarancha/app/modules/home/views/home_screen.dart';
-import 'package:casarancha/app/modules/post/views/create_post_screen.dart';
-import 'package:casarancha/app/modules/settings/views/setting_screen.dart';
-import 'package:casarancha/app/resources/app_colors.dart';
+// BottomNavigationScreen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutx_core/flutx_core.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class BottomNavigationScreen extends StatelessWidget {
-  BottomNavigationScreen({super.key});
+import '../controller/post_controller.dart';
+import '../controller/story_controller.dart';
+import '../controller/user_controller.dart';
+import '../modules/chat/views/chat_list_screen.dart';
+import '../modules/group/views/group_list_screen.dart';
+import '../modules/home/controller/home_scroll_controller.dart';
+import '../modules/home/views/home_screen.dart';
+import '../modules/post/views/create_post_screen.dart';
+import '../modules/settings/views/setting_screen.dart';
+import '../resources/app_colors.dart';
 
-  final RxInt _currentIndex = 0.obs;
+class BottomNavigationScreen extends StatefulWidget {
+  const BottomNavigationScreen({super.key});
+
+  @override
+  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+}
+
+class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+  final RxInt currentIndex = 0.obs;
+  DateTime? _lastHomeTapTime;
+
+  // Shared controllers
+  final homeScrollCtrl = Get.find<HomeScrollController>();
+  final userController = Get.find<UserController>();
 
   final List<Widget> _pages = [
-    HomeScreen(),
-    // SearchScreen(),
+    const HomeScreen(),
     CreatePostScreen(),
-    ChatListScreen(),
+    const ChatListScreen(),
     GroupListScreen(),
-    SettingScreen(),
+    const SettingScreen(),
   ];
 
-  final _userController = Get.find<UserController>();
+  void _refreshHomeFeed() {
+    DPrint.log("Refresing ..");
+    HapticFeedback.mediumImpact();
+
+    // Jump to top instantly before refresh
+    // homeScrollCtrl.jumpToTop();
+
+    homeScrollCtrl.triggerRefresh();
+
+    // Get.snackbar(
+    //   "Refreshed",
+    //   "You're all caught up!",
+    //   snackPosition: SnackPosition.TOP,
+    //   backgroundColor: Colors.black87,
+    //   colorText: Colors.white,
+    //   margin: const EdgeInsets.only(top: 90, left: 20, right: 20),
+    //   borderRadius: 12,
+    //   duration: const Duration(seconds: 1),
+    //   icon: const Icon(Icons.check_circle, color: Colors.white),
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +69,14 @@ class BottomNavigationScreen extends StatelessWidget {
         () => Container(
           decoration: BoxDecoration(
             border:
-                _userController.userModel.value!.ghostMode!.value
-                    ? Border(
+                userController.userModel.value?.ghostMode?.value == true
+                    ? const Border(
                       left: BorderSide(width: 2, color: Colors.red),
                       right: BorderSide(width: 2, color: Colors.red),
                     )
                     : null,
           ),
-          child: _pages[_currentIndex.value],
+          child: IndexedStack(index: currentIndex.value, children: _pages),
         ),
       ),
       bottomNavigationBar: Obx(
@@ -68,47 +104,48 @@ class BottomNavigationScreen extends StatelessWidget {
                 activeColor: Colors.white,
                 iconSize: 18,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
+                  horizontal: 16,
                   vertical: 13,
                 ),
-
                 tabBackgroundColor: AppColors.primaryColor,
                 color: Colors.grey[600],
                 tabs: const [
-                  GButton(
-                    icon: FontAwesomeIcons.house,
-                    text: 'Home',
-                    textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
-                  // GButton(
-                  //   icon: FontAwesomeIcons.magnifyingGlass,
-                  //   text: 'Search',
-                  //   textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  // ),
-                  GButton(
-                    icon: FontAwesomeIcons.plus,
-                    text: 'Create',
-                    textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
-                  GButton(
-                    icon: FontAwesomeIcons.solidMessage,
-                    text: 'Chat',
-                    textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
-                  GButton(
-                    icon: FontAwesomeIcons.userGroup,
-                    text: 'Group',
-                    textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
-                  GButton(
-                    icon: FontAwesomeIcons.gear,
-                    text: 'Settings',
-                    textStyle: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
+                  GButton(icon: FontAwesomeIcons.house, text: 'Home'),
+                  GButton(icon: FontAwesomeIcons.plus, text: 'Create'),
+                  GButton(icon: FontAwesomeIcons.solidMessage, text: 'Chat'),
+                  GButton(icon: FontAwesomeIcons.userGroup, text: 'Groups'),
+                  GButton(icon: FontAwesomeIcons.gear, text: 'Settings'),
                 ],
-                selectedIndex: _currentIndex.value,
+                selectedIndex: currentIndex.value,
                 onTabChange: (index) {
-                  _currentIndex.value = index;
+                  final now = DateTime.now();
+
+                  if (index == 0) {
+                    if (currentIndex.value == 0) {
+                      // Double tap → Refresh
+                      DPrint.info("Double tap → Refresh");
+                      if (_lastHomeTapTime != null &&
+                          now.difference(_lastHomeTapTime!).inMilliseconds <
+                              500) {
+                        _refreshHomeFeed();
+                        _lastHomeTapTime = null;
+                        return;
+                      }
+                      // Single tap → Scroll to top
+                      homeScrollCtrl.scrollToTop();
+                      _lastHomeTapTime = now;
+                    } else {
+                      // Coming from another tab
+                      currentIndex.value = 0;
+                      Future.delayed(const Duration(milliseconds: 150), () {
+                        homeScrollCtrl.scrollToTop();
+                      });
+                    }
+                    return;
+                  }
+
+                  _lastHomeTapTime = null;
+                  currentIndex.value = index;
                 },
               ),
             ),

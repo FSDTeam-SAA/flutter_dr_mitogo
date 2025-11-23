@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/localization_controller.dart';
+
 class LanguageSettingScreen extends StatelessWidget {
   LanguageSettingScreen({super.key});
+
+  final LocalizationController _localizationController = Get.find();
 
   final List<LanguageOption> languages = [
     LanguageOption('English', 'en', 'assets/flags/usa.png'),
@@ -35,10 +39,15 @@ class LanguageSettingScreen extends StatelessWidget {
                   final language = languages[index];
                   return _buildLanguageTile(
                     language: language,
-                    onTap: () {
+                    isSelected:
+                        _localizationController.getCurrentLanguageCode ==
+                        language.code,
+                    onTap: () async {
                       HapticFeedback.heavyImpact();
-                      // await _languageController.saveLanguage(language.code);
-                      // Get.back();
+                      await _localizationController.changeLanguage(
+                        language.code,
+                      );
+                      Get.back();
                     },
                   );
                 },
@@ -52,6 +61,7 @@ class LanguageSettingScreen extends StatelessWidget {
 
   Widget _buildLanguageTile({
     required LanguageOption language,
+    required bool isSelected,
     required VoidCallback onTap,
   }) {
     return Container(
@@ -59,8 +69,11 @@ class LanguageSettingScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-        border: Border.all(width: 1, color: Colors.grey.shade300),
+        color: isSelected ? Colors.pink.shade50 : Colors.white,
+        border: Border.all(
+          width: 1,
+          color: isSelected ? AppColors.primaryColor : Colors.grey.shade300,
+        ),
         boxShadow: [
           BoxShadow(
             offset: Offset(0, 0),
@@ -94,7 +107,16 @@ class LanguageSettingScreen extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        trailing: Text(language.code),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(language.code),
+            if (isSelected) ...[
+              const SizedBox(width: 8),
+              Icon(Icons.check_circle, color: AppColors.primaryColor),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -105,7 +127,7 @@ class LanguageSettingScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Language Settings",
+        "language_settings".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

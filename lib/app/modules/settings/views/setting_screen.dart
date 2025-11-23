@@ -67,7 +67,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 child: ListTile(
                   contentPadding: EdgeInsets.only(left: 15, right: 5),
                   title: Text(
-                    "See all app post’s & contents including mature content",
+                    "see_mature_content".tr,
                     style: Get.textTheme.bodyMedium!.copyWith(
                       color: Colors.black87,
                       fontWeight: FontWeight.w600,
@@ -105,7 +105,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 child: ListTile(
                   contentPadding: EdgeInsets.only(left: 15, right: 5),
                   title: Text(
-                    "Ghost Mode",
+                    "ghost_mode".tr,
                     style: Get.textTheme.bodyMedium!.copyWith(
                       color: Colors.black87,
                       fontWeight: FontWeight.w600,
@@ -130,30 +130,30 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 5),
               _buildSettingTile(
-                title: "Profile",
+                title: "profile".tr,
                 icon: FontAwesomeIcons.user,
                 onTap: () => Get.toNamed(AppRoutes.profile),
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Notification",
+                title: "notification".tr,
                 icon: FontAwesomeIcons.bell,
                 onTap: () => Get.toNamed(AppRoutes.notificationSetting),
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Language",
+                title: "language".tr,
                 icon: FontAwesomeIcons.language,
                 onTap: () => Get.toNamed(AppRoutes.languageSetting),
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Invite",
+                title: "invite".tr,
                 icon: FontAwesomeIcons.shareNodes,
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Get Verified",
+                title: "get_verified".tr,
                 icon: FontAwesomeIcons.shield,
                 onTap: () {
                   // Get.toNamed(AppRoutes.altVerification);
@@ -162,7 +162,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Blocked",
+                title: "blocked".tr,
                 icon: FontAwesomeIcons.ban,
                 onTap: () {
                   Get.toNamed(AppRoutes.blockedUsers);
@@ -178,7 +178,7 @@ class _SettingScreenState extends State<SettingScreen> {
               // ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Help",
+                title: "help".tr,
                 icon: FontAwesomeIcons.question,
                 onTap: () {
                   Get.toNamed(AppRoutes.support);
@@ -186,7 +186,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Logout",
+                title: "logout".tr,
                 icon: FontAwesomeIcons.arrowRightFromBracket,
                 iconColor: Colors.red,
                 onTap: () {
@@ -195,7 +195,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 10),
               _buildSettingTile(
-                title: "Delete Account",
+                title: "delete_account".tr,
                 icon: FontAwesomeIcons.trash,
                 iconColor: Colors.red,
                 onTap: () {
@@ -219,7 +219,7 @@ class _SettingScreenState extends State<SettingScreen> {
       showAllContent.toggle();
     } else {
       CustomSnackbar.showErrorToast(
-        "You must be at least 18 years old to enable this feature",
+        "you_must_be_18".tr,
       );
     }
   }
@@ -268,7 +268,7 @@ class _SettingScreenState extends State<SettingScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Settings",
+        "settings".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       // leading: Padding(
@@ -323,7 +323,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          "Logout",
+                          "logout".tr,
                           style: Get.textTheme.bodyMedium!.copyWith(
                             color: Colors.red,
                             fontWeight: FontWeight.w800,
@@ -335,7 +335,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     Divider(),
                     const SizedBox(height: 15),
                     Text(
-                      "Are you sure you want to logout?",
+                      "are_you_sure_logout".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.w600,
@@ -354,7 +354,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               bgColor: Colors.transparent,
                               border: Border.all(color: AppColors.primaryColor),
                               child: Text(
-                                "Cancel",
+                                "cancel".tr,
                                 style: Get.textTheme.bodyMedium!.copyWith(
                                   color: AppColors.primaryColor,
                                   fontSize: 13,
@@ -373,7 +373,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               },
                               isLoading: false.obs,
                               child: Text(
-                                "Logout",
+                                "logout".tr,
                                 style: Get.textTheme.bodyMedium!.copyWith(
                                   color: Colors.white,
                                   fontSize: 13,
@@ -424,7 +424,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         FaIcon(FontAwesomeIcons.trash, color: Colors.red),
                         const SizedBox(width: 10),
                         Text(
-                          "Delete Account",
+                          "delete_account".tr,
                           style: Get.textTheme.bodyMedium!.copyWith(
                             color: Colors.red,
                             fontWeight: FontWeight.w800,
@@ -436,7 +436,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     Divider(),
                     const SizedBox(height: 15),
                     Text(
-                      "Are you sure you want to delete your account?",
+                      "are_you_sure_delete".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.w600,
@@ -455,7 +455,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               bgColor: Colors.transparent,
                               border: Border.all(color: AppColors.primaryColor),
                               child: Text(
-                                "Cancel",
+                                "cancel".tr,
                                 style: Get.textTheme.bodyMedium!.copyWith(
                                   color: AppColors.primaryColor,
                                   fontSize: 13,
@@ -475,7 +475,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                           .deleteAccount(),
                               isLoading: false.obs,
                               child: Text(
-                                "Delete",
+                                "delete".tr,
                                 style: Get.textTheme.bodyMedium!.copyWith(
                                   color: Colors.white,
                                   fontSize: 13,

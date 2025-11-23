@@ -1,5 +1,3 @@
-
-
 import 'package:get/get.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -45,6 +43,19 @@ class StorageController extends GetxController {
   Future<String?> getLastPushId(String userId) async {
     try {
       return await _secureStorage.read(key: 'push_id_$userId');
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Noyon
+  Future<void> saveAppLanguage(String languageCode) async {
+    await _secureStorage.write(key: 'app_language', value: languageCode);
+  }
+
+  Future<String?> getAppLanguage() async {
+    try {
+      return await _secureStorage.read(key: 'app_language');
     } catch (e) {
       return null;
     }

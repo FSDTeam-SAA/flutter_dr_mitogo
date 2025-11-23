@@ -3,6 +3,7 @@ import 'package:casarancha/app/resources/app_text_theme.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'app/resources/app_translations.dart';
 import 'app/routes/app_pages.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
@@ -25,6 +26,10 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialBinding: AppBindings(),
       navigatorObservers: [routeObserver],
+
+      translations: AppTranslations(),
+      locale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
     );
   }
 }

@@ -15,6 +15,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
+import 'story_controller.dart';
+
 class PostController extends GetxController {
   final isloading = false.obs;
   final isGhostFeedLoading = false.obs;
@@ -175,7 +177,9 @@ class PostController extends GetxController {
       }
       for (var postId in postIds) {
         final postIndex = posts.indexWhere((post) => post.id == postId);
-        final ghostPostIndex = ghostPosts.indexWhere((post) => post.id == postId);
+        final ghostPostIndex = ghostPosts.indexWhere(
+          (post) => post.id == postId,
+        );
         if (postIndex != -1) {
           posts[postIndex].stats?.views!.value++;
           posts[postIndex].stats?.views?.refresh();
@@ -694,6 +698,48 @@ class PostController extends GetxController {
       debugPrint(e.toString());
     }
     return null;
+  }
+
+  /// [Noyon]
+  // ADD THIS METHOD TO PostController
+  Future<void> refreshHomeFeed({bool showLoader = true}) async {
+    // Reset pagination
+    currentPage.value = 1;
+    hasNextPage.value = false;
+
+    // Show loader if requested
+    isloading.value = showLoader;
+
+    try {
+      final token = await storageController.getToken();
+      if (token == null) return;
+
+      final response = await postService.getFeed(
+        token: token,
+        currentPage: currentPage,
+      );
+
+      if (response == null) return;
+
+      final decoded = json.decode(response.body);
+      if (response.statusCode != 200) {
+        final message = decoded["message"] ?? "Failed to refresh";
+        CustomSnackbar.showErrorToast(message);
+        return;
+      }
+
+      final List<dynamic> postsList = decoded["data"]?["posts"] ?? [];
+      posts.assignAll(postsList.map((e) => PostModel.fromJson(e)).toList());
+      hasNextPage.value = decoded["data"]?["pagination"]?["hasMore"] ?? false;
+
+      // Also refresh stories (important!)
+      await Get.find<StoryController>().getAllStories();
+      await Get.find<StoryController>().getUserPostedStories();
+    } catch (e) {
+      debugPrint("refreshHomeFeed error: $e");
+    } finally {
+      isloading.value = false;
+    }
   }
 
   //a metjod here
