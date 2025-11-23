@@ -114,11 +114,36 @@ const Map<String, String> ptBR = {
   'search_members': 'Pesquisar membros...',
   'chat_list': 'Chats',
 
+  'chat_history': 'Histórico de Conversas',
+  'personal': 'Pessoal',
+  'ghost': 'Fantasma',
+  'no_conversations_yet': 'Nenhuma conversa ainda',
+
   // ========== Grupos ==========
   'no_groups_found': 'Nenhum grupo encontrado',
   'no_members_found': 'Nenhum membro encontrado',
   'enter_topic_name': 'Digite o nome do tópico',
   'enter_description': 'Digite a descrição',
+
+  'groups': 'Grupos',
+  'all_groups': 'Todos os grupos',
+  'my_groups': 'Meus grupos',
+  'create_your_own_group': 'Crie seu próprio grupo',
+  'topic': 'Tópico',
+  'join': 'Entrar',
+  'joined': 'Entrou',
+
+  'create_group': 'Criar Grupo',
+  'description': 'Descrição',
+  'add_members': 'Adicionar membros',
+  'public': 'Público',
+  'private': 'Privado',
+  'create': 'Criar',
+  'add': 'Adicionar',
+  'added': 'Adicionado',
+  'please_select_an_image': 'Por favor, selecione uma imagem',
+  'select_one': 'Selecione um',
+  'leave': 'Sair',
 
   // ========== Opções de postagem/compartilhamento ==========
   'no_viewers_yet': 'Nenhum visualizador ainda',

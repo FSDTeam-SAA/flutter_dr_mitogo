@@ -111,11 +111,36 @@ const Map<String, String> arAR = {
   'search_members': 'البحث عن الأعضاء...',
   'chat_list': 'الرسائل',
 
+  'chat_history': 'سجل الدردشة',
+  'personal': 'شخصي',
+  'ghost': 'شبح',
+  'no_conversations_yet': 'لا توجد محادثات بعد',
+
   // ========== المجموعات ==========
   'no_groups_found': 'لم يتم العثور على مجموعات',
   'no_members_found': 'لم يتم العثور على أعضاء',
   'enter_topic_name': 'أدخل اسم الموضوع',
   'enter_description': 'أدخل الوصف',
+
+  'groups': 'المجموعات',
+  'all_groups': 'جميع المجموعات',
+  'my_groups': 'مجموعاتي',
+  'create_your_own_group': 'أنشئ مجموعتك الخاصة',
+  'topic': 'الموضوع',
+  'join': 'انضمام',
+  'joined': 'منضم',
+
+  'create_group': 'إنشاء مجموعة',
+  'description': 'الوصف',
+  'add_members': 'إضافة أعضاء',
+  'public': 'عامة',
+  'private': 'خاصة',
+  'create': 'إنشاء',
+  'add': 'إضافة',
+  'added': 'تمت الإضافة',
+  'please_select_an_image': 'الرجاء اختيار صورة',
+  'select_one': 'اختر واحدًا',
+  'leave': 'مغادرة',
 
   // ========== خيارات المشاركة ==========
   'no_viewers_yet': 'لا يوجد مشاهدون بعد',

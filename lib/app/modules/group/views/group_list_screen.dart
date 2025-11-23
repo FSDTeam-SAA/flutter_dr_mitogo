@@ -13,7 +13,7 @@ class GroupListScreen extends StatelessWidget {
   GroupListScreen({super.key});
 
   final RxInt selectedTab = 0.obs;
-  final _tabs = ['All Groups', 'My Groups'];
+  final _tabs = ['all_groups'.tr, 'my_groups'.tr];
   final List<Widget> _pages = [BuildAllGroup(), BuildMyGroups()];
 
   @override
@@ -27,7 +27,7 @@ class GroupListScreen extends StatelessWidget {
           children: [
             SizedBox(height: Get.size.height * 0.02),
             CustomTextField(
-              hintText: "Search",
+              hintText: "search".tr,
               prefixIcon: FontAwesomeIcons.magnifyingGlass,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
@@ -64,7 +64,7 @@ class GroupListScreen extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              "Create your own group",
+              "create_your_own_group".tr,
               style: Get.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -131,7 +131,7 @@ class GroupListScreen extends StatelessWidget {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Groups",
+        "groups".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(
@@ -207,7 +207,7 @@ class _BuildMyGroupsState extends State<BuildMyGroups> {
           );
         }
         if (groupController.userGroups.isEmpty) {
-          return const Center(child: Text("No groups found"));
+          return Center(child: Text("no_groups_found".tr));
         }
         return ListView.builder(
           itemCount: groupController.userGroups.length,
@@ -281,7 +281,7 @@ class _BuildAllGroupState extends State<BuildAllGroup> {
           );
         }
         if (groupController.groupList.isEmpty) {
-          return const Center(child: Text("No groups found"));
+          return Center(child: Text("no_groups_found".tr));
         }
         return ListView.builder(
           itemCount: groupController.groupList.length,
@@ -312,7 +312,7 @@ class _BuildAllGroupState extends State<BuildAllGroup> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Topic", style: Get.textTheme.bodySmall),
+                        Text("topic".tr, style: Get.textTheme.bodySmall),
                         Text(
                           group.name ?? "",
                           style: Get.textTheme.bodyLarge!.copyWith(
@@ -359,7 +359,7 @@ class _BuildAllGroupState extends State<BuildAllGroup> {
           return selectedIndex.value == index
               ? Loader1(color: Colors.white, size: 15)
               : Text(
-                "Join",
+                "join".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,

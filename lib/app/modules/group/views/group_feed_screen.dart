@@ -75,7 +75,6 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
     });
   }
 
-
   @override
   void dispose() {
     postController.stopTimer();
@@ -99,7 +98,7 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
                 if (groupFeed.isEmpty) {
                   return Center(
                     child: Text(
-                      "No posts found",
+                      "no_posts_found_profile".tr,
                       style: Get.textTheme.bodyMedium,
                     ),
                   );
@@ -204,7 +203,7 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
             return [
               PopupMenuItem(
                 child: Text(
-                  "Report",
+                  "report".tr,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -225,7 +224,7 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
               ),
               PopupMenuItem(
                 child: Text(
-                  "Post",
+                  "post".tr,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -238,7 +237,7 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
               ),
               PopupMenuItem(
                 child: Text(
-                  "Copy",
+                  "copy".tr,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -250,7 +249,7 @@ class _GroupFeedScreenState extends State<GroupFeedScreen> {
 
               PopupMenuItem(
                 child: Text(
-                  "Leave",
+                  "leave".tr,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,

@@ -163,7 +163,7 @@ class _ChatScreenState extends State<ChatScreen> {
       }
 
       if (chatHistoryAndLiveMessage.isEmpty && oldChats.isEmpty) {
-        return const Center(child: Text("No Message"));
+        return Center(child: Text("no_message".tr));
       }
 
       return _buildMessageListView(chatHistoryAndLiveMessage);
@@ -349,53 +349,53 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Row buildInputFields() {
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 10,
-              top: 10,
-              bottom: 10,
-              right: 5,
-            ),
-            child: CustomTextField(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none,
-              ),
-              hintText: "Write your reply here..",
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none,
-              ),
-              bgColor: Color.fromARGB(255, 240, 240, 243),
-              suffixIcon: Icons.attach_file,
-              suffixIconcolor: Colors.grey,
-            ),
-          ),
-        ),
-        const SizedBox(width: 10),
-        Container(
-          height: 50,
-          width: 50,
-          margin: const EdgeInsets.only(right: 15),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(width: 1, color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: InkWell(
-            onTap: () {
-              HapticFeedback.lightImpact();
-            },
-            child: Icon(Icons.mic, color: AppColors.primaryColor),
-          ),
-        ),
-      ],
-    );
-  }
+  // Row buildInputFields() {
+  //   return Row(
+  //     children: [
+  //       Expanded(
+  //         child: Padding(
+  //           padding: const EdgeInsets.only(
+  //             left: 10,
+  //             top: 10,
+  //             bottom: 10,
+  //             right: 5,
+  //           ),
+  //           child: CustomTextField(
+  //             enabledBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(10),
+  //               borderSide: BorderSide.none,
+  //             ),
+  //             hintText: "write_reply".tr,
+  //             focusedBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(10),
+  //               borderSide: BorderSide.none,
+  //             ),
+  //             bgColor: Color.fromARGB(255, 240, 240, 243),
+  //             suffixIcon: Icons.attach_file,
+  //             suffixIconcolor: Colors.grey,
+  //           ),
+  //         ),
+  //       ),
+  //       const SizedBox(width: 10),
+  //       Container(
+  //         height: 50,
+  //         width: 50,
+  //         margin: const EdgeInsets.only(right: 15),
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           border: Border.all(width: 1, color: Colors.grey.shade300),
+  //           borderRadius: BorderRadius.circular(15),
+  //         ),
+  //         child: InkWell(
+  //           onTap: () {
+  //             HapticFeedback.lightImpact();
+  //           },
+  //           child: Icon(Icons.mic, color: AppColors.primaryColor),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   AppBar _buildAppBar() {
     return AppBar(
@@ -425,7 +425,10 @@ class _ChatScreenState extends State<ChatScreen> {
               Text(
                 widget.chatHead.online ?? false ? "Online" : "Offline",
                 style: Get.textTheme.bodySmall!.copyWith(
-                  color: widget.chatHead.online ?? false ? Colors.green : Colors.grey,
+                  color:
+                      widget.chatHead.online ?? false
+                          ? Colors.green
+                          : Colors.grey,
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
                 ),

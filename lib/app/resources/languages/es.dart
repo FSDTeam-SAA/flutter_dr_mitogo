@@ -114,11 +114,36 @@ const Map<String, String> esES = {
   'search_members': 'Buscar miembros...',
   'chat_list': 'Chats',
 
+  'chat_history': 'Historial de chats',
+  'personal': 'Personal',
+  'ghost': 'Fantasma',
+  'no_conversations_yet': 'Aún no hay conversaciones',
+
   // ========== Grupos ==========
   'no_groups_found': 'No se encontraron grupos',
   'no_members_found': 'No se encontraron miembros',
   'enter_topic_name': 'Ingresa el nombre del tema',
   'enter_description': 'Ingresa la descripción',
+
+  'groups': 'Grupos',
+  'all_groups': 'Todos los grupos',
+  'my_groups': 'Mis grupos',
+  'create_your_own_group': 'Crea tu propio grupo',
+  'topic': 'Tema',
+  'join': 'Unirse',
+  'joined': 'Unido',
+
+  'create_group': 'Crear grupo',
+  'description': 'Descripción',
+  'add_members': 'Agregar miembros',
+  'public': 'Público',
+  'private': 'Privado',
+  'create': 'Crear',
+  'add': 'Añadir',
+  'added': 'Añadido',
+  'please_select_an_image': 'Por favor selecciona una imagen',
+  'select_one': 'Selecciona uno',
+  'leave': 'Salir',
 
   // ========== Opciones de publicación/compartir ==========
   'no_viewers_yet': 'Sin espectadores aún',

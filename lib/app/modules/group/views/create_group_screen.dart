@@ -65,7 +65,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
               buildFormFields(),
               const SizedBox(height: 15),
               Text(
-                "Add Members",
+                "add_members".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w900,
                 ),
@@ -97,7 +97,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
 
               const SizedBox(height: 20),
               Text(
-                "Select One",
+                "select_one".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w900,
                 ),
@@ -109,7 +109,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                 ontap: () async {
                   if (!formKey.currentState!.validate()) return;
                   if (pickedFile.value == null) {
-                    CustomSnackbar.showErrorToast("Please select an image");
+                    CustomSnackbar.showErrorToast("please_select_an_image".tr);
                     return;
                   }
                   List<String> ids =
@@ -124,7 +124,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                 },
                 isLoading: groupController.isLoading,
                 child: Text(
-                  "Create",
+                  "create".tr,
                   style: Get.textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
@@ -207,7 +207,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Topic",
+            "topic".tr,
             style: Get.textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.w900,
             ),
@@ -215,7 +215,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           const SizedBox(height: 5),
           CustomTextField(
             controller: nameController,
-            hintText: "Enter topic name",
+            hintText: "enter_topic_name".tr,
             bgColor: const Color(0xFFF7F7F9),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -224,7 +224,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           ),
           const SizedBox(height: 15),
           Text(
-            "Description",
+            "description".tr,
             style: Get.textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.w900,
             ),
@@ -232,7 +232,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           const SizedBox(height: 5),
           CustomTextField(
             controller: descriptionController,
-            hintText: "Enter description",
+            hintText: "enter_description".tr,
             minLines: 4,
             maxLines: 5,
             bgColor: const Color(0xFFF7F7F9),
@@ -290,7 +290,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
 
                     // const SizedBox(width: 5),
                     Text(
-                      "Public",
+                      "public".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -343,7 +343,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
 
                     // const SizedBox(width: 5),
                     Text(
-                      "Private",
+                      "private".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -384,7 +384,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          "Add Members",
+                          "add_members".tr,
                           style: Get.textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w900,
                             fontSize: 18,
@@ -419,7 +419,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                       children: [
                         // Search Field
                         CustomTextField(
-                          hintText: "Search members...",
+                          hintText: "search_members".tr,
                           bgColor: const Color(0xFFF7F7F9),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
@@ -448,7 +448,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
     return Expanded(
       child: Obx(() {
         if (groupController.membersToAdd.isEmpty) {
-          return const Center(child: Text("No members found"));
+          return Center(child: Text("no_members_found".tr));
         }
         return ListView.builder(
           itemCount: groupController.membersToAdd.length,
@@ -503,7 +503,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                                 : null,
                         isLoading: false.obs,
                         child: Text(
-                          isAdded ? "Added" : "Add",
+                          isAdded ? "added".tr : "add".tr,
                           style: GoogleFonts.poppins(
                             color:
                                 isAdded ? AppColors.primaryColor : Colors.white,
@@ -529,7 +529,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Create Group",
+        "create_group".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(

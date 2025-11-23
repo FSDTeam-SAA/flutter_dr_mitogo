@@ -113,11 +113,36 @@ const Map<String, String> enUS = {
   'search_members': 'Search members...',
   'chat_list': 'Chats',
 
+  'chat_history': 'Chat History',
+  'personal': 'Personal',
+  'ghost': 'Ghost',
+  'no_conversations_yet': 'No conversations yet',
+
   // ========== Groups ==========
   'no_groups_found': 'No groups found',
   'no_members_found': 'No members found',
   'enter_topic_name': 'Enter topic name',
   'enter_description': 'Enter description',
+
+  'groups': 'Groups',
+  'all_groups': 'All Groups',
+  'my_groups': 'My Groups',
+  'create_your_own_group': 'Create your own group',
+  'topic': 'Topic',
+  'join': 'Join',
+  'joined': 'Joined',
+
+  'create_group': 'Create Group',
+  'description': 'Description',
+  'add_members': 'Add Members',
+  'public': 'Public',
+  'private': 'Private',
+  'create': 'Create',
+  'add': 'Add',
+  'added': 'Added',
+  'please_select_an_image': 'Please select an image',
+  'select_one': 'Select One',
+  'leave': 'Leave',
 
   // ========== Post/Share Options ==========
   'no_viewers_yet': 'No viewers yet',

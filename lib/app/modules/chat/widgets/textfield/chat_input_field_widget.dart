@@ -33,145 +33,147 @@ class NewChatInputFields extends StatelessWidget {
   }
 
   Widget _buildInputFieldRow(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              constraints: BoxConstraints(
-                maxWidth: Get.width * 0.845,
-                minHeight: 45,
-              ),
-              margin: const EdgeInsets.all(2.5),
-              // decoration: chatInputFieldDecoration(),
-              child: Column(
-                children: [
-                  ReplyToContent(
-                    controller: controller,
-                    chatHead: chatHead,
-                    isSender: false,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // IconButton(
-                      //   onPressed: () {
-                      //     FocusManager.instance.primaryFocus?.unfocus();
-                      //     Future.delayed(const Duration(milliseconds: 200), () {
-                      //       controller.showEmojiPicker.toggle();
-                      //     });
-                      //   },
-                      //   icon: const FaIcon(
-                      //     FontAwesomeIcons.solidFaceSmile,
-                      //     color: Colors.grey,
-                      //   ),
-                      // ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                            top: 10,
-                            bottom: 10,
-                            right: 5,
-                          ),
-                          child: CustomTextField(
-                            minLines: 1,
-                            maxLines: 3,
-                            onTap: () {
-                              controller.showEmojiPicker.value = false;
-                              FocusManager.instance.primaryFocus
-                                  ?.requestFocus();
-                            },
-                            controller: controller.textMessageController,
-                            onChanged: controller.handleTyping,
-                            textStyle: Get.textTheme.labelMedium?.copyWith(
-                              color: Colors.black,
+    return SafeArea(
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: Get.width * 0.845,
+                  minHeight: 45,
+                ),
+                margin: const EdgeInsets.all(2.5),
+                // decoration: chatInputFieldDecoration(),
+                child: Column(
+                  children: [
+                    ReplyToContent(
+                      controller: controller,
+                      chatHead: chatHead,
+                      isSender: false,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // IconButton(
+                        //   onPressed: () {
+                        //     FocusManager.instance.primaryFocus?.unfocus();
+                        //     Future.delayed(const Duration(milliseconds: 200), () {
+                        //       controller.showEmojiPicker.toggle();
+                        //     });
+                        //   },
+                        //   icon: const FaIcon(
+                        //     FontAwesomeIcons.solidFaceSmile,
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10,
+                              top: 10,
+                              bottom: 10,
+                              right: 5,
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide.none,
+                            child: CustomTextField(
+                              minLines: 1,
+                              maxLines: 3,
+                              onTap: () {
+                                controller.showEmojiPicker.value = false;
+                                FocusManager.instance.primaryFocus
+                                    ?.requestFocus();
+                              },
+                              controller: controller.textMessageController,
+                              onChanged: controller.handleTyping,
+                              textStyle: Get.textTheme.labelMedium?.copyWith(
+                                color: Colors.black,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: "Write your reply here..",
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
+                              ),
+                              bgColor: Color.fromARGB(255, 240, 240, 243),
+                              suffixIcon: Icons.attach_file,
+                              suffixIconcolor: Colors.grey,
+                              onSuffixTap: () {
+                                _showMediaPickerBottomSheet(context);
+                              },
                             ),
-                            hintText: "Write your reply here..",
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide.none,
-                            ),
-                            bgColor: Color.fromARGB(255, 240, 240, 243),
-                            suffixIcon: Icons.attach_file,
-                            suffixIconcolor: Colors.grey,
-                            onSuffixTap: () {
-                              _showMediaPickerBottomSheet(context);
-                            },
                           ),
                         ),
-                      ),
-                      // Expanded(
-                      //   child: TextField(
-                      //     minLines: 1,
-                      //     maxLines: 3,
-                      //     onTap: () {
-                      //       controller.showEmojiPicker.value = false;
-                      //       FocusManager.instance.primaryFocus?.requestFocus();
-                      //     },
-                      //     cursorColor: AppColors.primaryColor,
-                      //     controller: controller.textMessageController,
-                      //     onChanged: controller.handleTyping,
-                      //     style: Get.textTheme.labelMedium,
-                      //     decoration: InputDecoration(
-                      //       hintText: "Type a message...",
-                      //       hintStyle: Get.textTheme.labelMedium,
-                      //       border: InputBorder.none,
-                      //       contentPadding: const EdgeInsets.symmetric(
-                      //         vertical: 12,
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      // IconButton(
-                      //   icon: const Icon(
-                      //     Icons.attach_file_rounded,
-                      //     color: Colors.grey,
-                      //   ),
-                      //   onPressed: () => _showMediaPickerBottomSheet(context),
-                      // ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Obx(() {
-              final hasTextOrMedia =
-                  controller.wordsTyped.value.isNotEmpty ||
-                  controller.mediaController.selectedFile.value != null ||
-                  controller.audioController.selectedFile.value != null ||
-                  controller.mediaController.multipleMediaSelected.isNotEmpty;
-
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 2.0),
-                child: CircleAvatar(
-                  radius: 24,
-                  backgroundColor: AppColors.primaryColor,
-                  child: IconButton(
-                    icon: Icon(
-                      hasTextOrMedia ? Icons.send : Icons.mic,
-                      color: Colors.white,
-                      size: hasTextOrMedia ? 18 : null,
+                        // Expanded(
+                        //   child: TextField(
+                        //     minLines: 1,
+                        //     maxLines: 3,
+                        //     onTap: () {
+                        //       controller.showEmojiPicker.value = false;
+                        //       FocusManager.instance.primaryFocus?.requestFocus();
+                        //     },
+                        //     cursorColor: AppColors.primaryColor,
+                        //     controller: controller.textMessageController,
+                        //     onChanged: controller.handleTyping,
+                        //     style: Get.textTheme.labelMedium,
+                        //     decoration: InputDecoration(
+                        //       hintText: "Type a message...",
+                        //       hintStyle: Get.textTheme.labelMedium,
+                        //       border: InputBorder.none,
+                        //       contentPadding: const EdgeInsets.symmetric(
+                        //         vertical: 12,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // IconButton(
+                        //   icon: const Icon(
+                        //     Icons.attach_file_rounded,
+                        //     color: Colors.grey,
+                        //   ),
+                        //   onPressed: () => _showMediaPickerBottomSheet(context),
+                        // ),
+                      ],
                     ),
-                    onPressed:
-                        hasTextOrMedia
-                            ? controller.sendMessage
-                            : controller.audioController.startRecording,
-                  ),
+                  ],
                 ),
-              );
-            }),
-          ],
-        ),
-        // Emoji picker
-        // _buildEmojiPicker(),
-      ],
+              ),
+              Obx(() {
+                final hasTextOrMedia =
+                    controller.wordsTyped.value.isNotEmpty ||
+                    controller.mediaController.selectedFile.value != null ||
+                    controller.audioController.selectedFile.value != null ||
+                    controller.mediaController.multipleMediaSelected.isNotEmpty;
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 2.0),
+                  child: CircleAvatar(
+                    radius: 24,
+                    backgroundColor: AppColors.primaryColor,
+                    child: IconButton(
+                      icon: Icon(
+                        hasTextOrMedia ? Icons.send : Icons.mic,
+                        color: Colors.white,
+                        size: hasTextOrMedia ? 18 : null,
+                      ),
+                      onPressed:
+                          hasTextOrMedia
+                              ? controller.sendMessage
+                              : controller.audioController.startRecording,
+                    ),
+                  ),
+                );
+              }),
+            ],
+          ),
+          // Emoji picker
+          // _buildEmojiPicker(),
+        ],
+      ),
     );
   }
 

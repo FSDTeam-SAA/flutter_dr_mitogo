@@ -73,7 +73,7 @@ class _CommentSheetState extends State<CommentSheet> {
         () => CustomTextField(
           controller: postController.commentController,
           focusNode: postController.focusNode,
-          hintText: "Write a comment here....",
+          hintText: "write_comment".tr,
           suffixIcon:
               postController.isReplyingComments.value
                   ? Icons.refresh
@@ -149,7 +149,7 @@ class _CommentSheetState extends State<CommentSheet> {
     }
   }
 
-  Center _buildEmptyList() => const Center(child: Text("No comments yet"));
+  Center _buildEmptyList() => Center(child: Text("no_comments_yet".tr));
 
   Center _buildLoader() {
     return const Center(

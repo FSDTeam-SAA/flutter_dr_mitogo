@@ -43,7 +43,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(width: 1, color: Colors.grey),
                 ),
-                hintText: "Search",
+                hintText: "search".tr,
                 prefixIcon: Icons.search,
               ),
               const SizedBox(height: 15),
@@ -58,7 +58,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                       color: const Color.fromARGB(255, 255, 217, 217),
                     ),
                     child: Text(
-                      "Personal",
+                      "personal".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         color: AppColors.primaryColor,
                         fontSize: 12,
@@ -76,7 +76,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                       color: const Color.fromARGB(255, 240, 240, 240),
                     ),
                     child: Text(
-                      "Ghost",
+                      "ghost".tr,
                       style: Get.textTheme.bodyMedium!.copyWith(
                         color: Colors.grey,
                         fontSize: 12,
@@ -149,8 +149,8 @@ class _ChatListScreenState extends State<ChatListScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'No conversations yet',
+            Text(
+              'no_conversations_yet'.tr,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ],
@@ -246,7 +246,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
               Icon(Icons.block, color: Colors.red),
               const SizedBox(width: 5),
               Text(
-                "Block",
+                "block".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -262,7 +262,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
               Icon(Icons.report, color: Colors.red),
               const SizedBox(width: 5),
               Text(
-                "Report",
+                "report".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -278,7 +278,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
               Icon(Icons.delete, color: Colors.red),
               const SizedBox(width: 5),
               Text(
-                "Delete",
+                "delete".tr,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                   color: Colors.red,
@@ -297,7 +297,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
       centerTitle: true,
       elevation: 0,
       title: Text(
-        "Chat History",
+        "chat_history".tr,
         style: Get.textTheme.bodyLarge!.copyWith(color: AppColors.primaryColor),
       ),
       leading: Padding(
