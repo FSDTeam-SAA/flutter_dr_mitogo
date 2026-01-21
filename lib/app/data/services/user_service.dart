@@ -200,7 +200,7 @@ class UserService {
     required String referenceId,
   }) async {
     try {
-      final url = Uri.parse("$baseUrl/user/create-report");
+      final url = Uri.parse("$baseUrl/user/report");
       final response = await client
           .post(
             url,
