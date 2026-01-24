@@ -24,14 +24,13 @@ class PostService {
       if (postModel != null) {
         final json = postModel.toJson();
         json.forEach((key, value) {
-          if (value != null) {
-            request.fields[key] = value.toString();
+          if (value == null) return;
+          if (value is List || value is Map) {
+            request.fields[key] = jsonEncode(value);
+            return;
           }
+          request.fields[key] = value.toString();
         });
-      }
-
-      if (postModel?.poll != null) {
-        request.fields['poll'] = jsonEncode(postModel!.poll!.toJson());
       }
 
       if (files != null) {

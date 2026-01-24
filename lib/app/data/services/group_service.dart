@@ -31,8 +31,8 @@ class GroupService {
       request.fields['description'] = description;
       request.fields['visibilityType'] = visibilityType;
 
-      for (var memberId in membersId) {
-        request.fields['memberIds[]'] = memberId;
+      if (membersId.isNotEmpty) {
+        request.fields['memberIds'] = jsonEncode(membersId);
       }
 
       final mimeType = lookupMimeType(file.path) ?? 'application/octet-stream';

@@ -127,7 +127,7 @@ class MessageModel {
       data["replyToMessageId"] = replyToMessage?.id;
     }
     if (multipleImages != null) {
-      data["multpleMedia"] =
+      data["multipleImages"] =
           multipleImages!.map((image) => image.toJson()).toList();
     }
     if (storyMediaUrl != null) {
