@@ -9,6 +9,7 @@ class VerificationController extends GetxController {
   RxInt currentStep = 0.obs;
   RxBool isLoading = false.obs;
   RxString selectedIdType = "".obs;
+  RxString verificationType = "profile".obs;
   Rxn<File?> frontIdImage = Rxn<File?>(null);
   Rxn<File?> backIdImage = Rxn<File?>(null);
   Rxn<File?> selfieImage = Rxn<File?>(null);
@@ -20,6 +21,11 @@ class VerificationController extends GetxController {
         {'id': 'driving', 'name': 'Driving License'},
         {'id': 'national', 'name': 'National ID'},
       ].obs;
+  final List<Map<String, String>> verificationTypes = const [
+    {'id': 'profile', 'name': 'Profile'},
+    {'id': 'work', 'name': 'Work'},
+    {'id': 'school', 'name': 'School'},
+  ];
 
   void nextStep() {
     if (currentStep < 4) {

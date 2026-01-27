@@ -1,6 +1,5 @@
 import 'package:casarancha/app/controller/post_controller.dart';
 import 'package:casarancha/app/data/models/post_model.dart' as pm;
-import 'package:casarancha/app/modules/post/controller/create_post_controller.dart';
 import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -86,7 +85,6 @@ class CreatePollController extends GetxController {
   Future<void> createPoll({String? groupId, String? groupName}) async {
     if (!validatePoll()) return;
     isLoading.value = true;
-    bool isAnoymous = Get.find<CreatePostController>().isAnonymous.value;
     List<pm.PollOptions> pollOptions =
         optionControllers
             .map((controller) => pm.PollOptions(text: controller.text.trim()))
@@ -98,7 +96,8 @@ class CreatePollController extends GetxController {
     );
     pm.PostModel post = pm.PostModel(
       poll: poll,
-      visibility: pm.Visibility(type: getVisibilityType(isAnoymous, groupId)),
+      postType: "regular",
+      visibility: pm.Visibility(type: getVisibilityType(groupId)),
       groupId: groupId,
       groupName: groupName,
     );
@@ -106,10 +105,7 @@ class CreatePollController extends GetxController {
     isLoading.value = false;
   }
 
-  String? getVisibilityType(bool isAnoymous, String? groupId) {
-    if (isAnoymous) {
-      return "ghost";
-    }
+  String? getVisibilityType(String? groupId) {
     if (groupId != null) {
       return "group";
     }

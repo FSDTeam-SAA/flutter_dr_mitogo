@@ -50,7 +50,7 @@ class PostController extends GetxController {
   //injection post variable
   RxInt scrollCount = 0.obs;
   RxInt lastInjectedIndex = 0.obs;
-  final List<int> injectionIntervals = [15, 200, 400];
+  final List<int> injectionIntervals = [15, 80, 150, 250];
   int currentInjectionIndex = 0;
 
   @override

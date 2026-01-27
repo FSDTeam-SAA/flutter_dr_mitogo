@@ -558,11 +558,23 @@ class UserService {
     required File frontId,
     required File backId,
     required File selfieId,
+    String verificationType = "profile",
+    String? idType,
+    Map<String, String>? metadata,
   }) async {
     try {
       final url = Uri.parse("$baseUrl/verification/upload-id");
       final request = http.MultipartRequest("POST", url)
         ..headers['Authorization'] = 'Bearer $token';
+      request.fields['verificationType'] = verificationType;
+      if (idType != null && idType.isNotEmpty) {
+        request.fields['idType'] = idType;
+      }
+      metadata?.forEach((key, value) {
+        if (value.isNotEmpty) {
+          request.fields[key] = value;
+        }
+      });
       request.files.add(
         await http.MultipartFile.fromPath('id_front', frontId.path),
       );

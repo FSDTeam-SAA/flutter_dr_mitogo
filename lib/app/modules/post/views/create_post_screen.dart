@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:casarancha/app/data/models/fomo_window_model.dart';
 import 'package:casarancha/app/modules/post/controller/create_post_controller.dart';
 import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
@@ -35,7 +36,6 @@ class CreatePostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.isAnonymous.value = anonymous ?? false;
     return Scaffold(
       appBar: _buildAppBar(),
       body: Container(
@@ -49,15 +49,9 @@ class CreatePostScreen extends StatelessWidget {
                 "What do you want to post today?",
                 style: Get.textTheme.labelLarge!.copyWith(fontSize: 15),
               ),
+              const SizedBox(height: 10),
+              _buildFomoSection(),
               SizedBox(height: Get.height * 0.03),
-              if (anonymous != null || anonymous == true)
-                _buildPostFeatureCard(
-                  title: "Post as anoynmous",
-                  value: controller.isAnonymous,
-                  onChanged: (value) {
-                    controller.isAnonymous.value = value;
-                  },
-                ),
               _buildPostFeatureCard(
                 title: "Turn on Verification Badge",
                 value: controller.isVerificationBadge,
@@ -353,23 +347,156 @@ class CreatePostScreen extends StatelessWidget {
   }
 
   String? getPostType() {
-    if (controller.isAnonymous.value) {
-      return "ghost";
+    if (originalPostId != null) {
+      return "repost";
     }
-    if (originalPostId == null) {
-      return "regular";
-    }
-    return "repost";
+    return "regular";
   }
 
   String? getVisibilityType() {
-    if (controller.isAnonymous.value) {
-      return "ghost";
-    }
     if (groupId != null) {
       return "group";
     }
     return "public";
+  }
+
+  Widget _buildFomoSection() {
+    return Obx(() {
+      final isLoading = controller.isLoadingFomo.value;
+      final window = controller.selectedFomoWindow.value;
+      return Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: Colors.grey.shade300),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 6,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "FOMO window",
+                  style: Get.textTheme.bodyMedium!
+                      .copyWith(fontWeight: FontWeight.w700, color: AppColors.primaryColor),
+                ),
+                TextButton(
+                  onPressed: isLoading ? null : () => controller.loadActiveFomoWindows(),
+                  child: Text(
+                    isLoading ? "Refreshing..." : "Refresh",
+                    style: TextStyle(color: AppColors.primaryColor, fontSize: 12),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            if (isLoading)
+              const LinearProgressIndicator(minHeight: 3)
+            else if (window == null)
+              Text(
+                "No active FOMO window right now. We'll let you know when one starts.",
+                style: Get.textTheme.bodySmall,
+              )
+            else
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    window.title,
+                    style: Get.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _formatDateRange(window),
+                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "${window.participantCount} joined · ${window.postCount} posts",
+                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
+                  ),
+                ],
+              ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: (controller.isJoiningFomo.value || window == null || isLoading)
+                        ? null
+                        : controller.joinSelectedFomo,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Obx(
+                      () => controller.isJoiningFomo.value
+                          ? const SizedBox(
+                              height: 16,
+                              width: 16,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : const Text(
+                              "Join FOMO",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 12,
+                              ),
+                            ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {
+                      CustomSnackbar.showSuccessToast("Campaign shortcuts coming soon.");
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: AppColors.primaryColor),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      "Campaign",
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  String _formatDateRange(FomoWindow window) {
+    final start = window.startTime.toLocal().toString().split(".").first;
+    final end = window.endTime.toLocal().toString().split(".").first;
+    return "$start • $end";
   }
 
   Widget _buildSelectedMedia() {

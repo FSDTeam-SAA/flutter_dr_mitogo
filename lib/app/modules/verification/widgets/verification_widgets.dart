@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:casarancha/app/controller/user_controller.dart';
 import 'package:casarancha/app/modules/verification/controller/verification_controller.dart';
 import 'package:casarancha/app/resources/app_colors.dart';
+import 'package:casarancha/app/widgets/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -55,7 +57,28 @@ class BuildIdSelectionStep extends StatelessWidget {
           'Choose the identification document you wish to verify with',
           style: TextStyle(color: Colors.grey),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 12),
+        Obx(
+          () => Wrap(
+            spacing: 8,
+            children: _badgeController.verificationTypes.map((type) {
+              final isSelected = _badgeController.verificationType.value == type['id'];
+              return ChoiceChip(
+                label: Text(type['name']!),
+                selected: isSelected,
+                onSelected: (_) =>
+                    _badgeController.verificationType.value = type['id'] ?? 'profile',
+                selectedColor: AppColors.primaryColor.withOpacity(0.2),
+                labelStyle: TextStyle(
+                  color: isSelected ? AppColors.primaryColor : Colors.black87,
+                  fontWeight: FontWeight.w700,
+                ),
+              );
+            }).toList(),
+          ),
+        ),
+        const SizedBox(height: 12),
+        const SizedBox(height: 12),
         Obx(() {
           final idTypes = _badgeController.idTypes;
           RxString selectedIdType = _badgeController.selectedIdType;
@@ -439,7 +462,31 @@ class BuildReviewStep extends StatelessWidget {
         const SizedBox(height: 16),
         Obx(
           () => VerificationBadgeButton(
-            onPressed: () async {},
+            onPressed: _verificationController.isLoading.value
+                ? null
+                : () async {
+                    if (_verificationController.frontIdImage.value == null ||
+                        _verificationController.backIdImage.value == null ||
+                        _verificationController.selfieImage.value == null) {
+                      CustomSnackbar.showErrorToast(
+                        "Please upload all required images before submitting.",
+                      );
+                      return;
+                    }
+                    _verificationController.isLoading.value = true;
+                    try {
+                      final userController = Get.find<UserController>();
+                      await userController.verificationRequest(
+                        frontId: _verificationController.frontIdImage.value!,
+                        backId: _verificationController.backIdImage.value!,
+                        selfieId: _verificationController.selfieImage.value!,
+                        verificationType: _verificationController.verificationType.value,
+                        idType: _verificationController.selectedIdType.value,
+                      );
+                    } finally {
+                      _verificationController.isLoading.value = false;
+                    }
+                  },
             text:
                 _verificationController.isLoading.value
                     ? "Processing..."

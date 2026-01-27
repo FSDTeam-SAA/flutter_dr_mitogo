@@ -654,6 +654,8 @@ class UserController extends GetxController {
     required File frontId,
     required File backId,
     required File selfieId,
+    String verificationType = "profile",
+    String? idType,
   }) async {
     isloading.value = true;
     try {
@@ -666,6 +668,8 @@ class UserController extends GetxController {
         frontId: frontId,
         backId: backId,
         selfieId: selfieId,
+        verificationType: verificationType,
+        idType: idType,
       );
 
       if (response == null) return;
