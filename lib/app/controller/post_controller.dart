@@ -6,8 +6,10 @@ import 'package:casarancha/app/controller/user_controller.dart';
 import 'package:casarancha/app/data/models/comment_model.dart';
 import 'package:casarancha/app/data/models/group_model.dart';
 import 'package:casarancha/app/data/models/post_model.dart';
+import 'package:casarancha/app/data/models/ad_campaign_model.dart';
 import 'package:casarancha/app/data/models/user_model.dart';
 import 'package:casarancha/app/data/services/post_service.dart';
+import 'package:casarancha/app/data/services/ad_service.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
 import 'package:casarancha/app/widgets/snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,9 @@ class PostController extends GetxController {
 
   RxList<PostModel> posts = <PostModel>[].obs;
   RxList<PostModel> ghostPosts = <PostModel>[].obs;
+  RxList<AdCampaign> ads = <AdCampaign>[].obs;
   final PostService postService = PostService();
+  final AdService adService = AdService();
 
   final storageController = Get.find<StorageController>();
   RxList<String> viewedPostIds = <String>[].obs;
@@ -57,6 +61,7 @@ class PostController extends GetxController {
   void onInit() {
     getFeed(showLoader: false);
     getGhostFeed(showLoader: false);
+    loadAds();
     super.onInit();
   }
 
@@ -156,6 +161,21 @@ class PostController extends GetxController {
       debugPrint(e.toString());
     } finally {
       isGhostFeedLoading.value = false;
+    }
+  }
+
+  Future<void> loadAds() async {
+    try {
+      final token = await storageController.getToken();
+      if (token == null) return;
+      final response = await adService.getActiveAds(token: token);
+      if (response == null) return;
+      final decoded = json.decode(response.body);
+      if (response.statusCode != 200) return;
+      final List data = decoded["data"] ?? [];
+      ads.assignAll(data.map((e) => AdCampaign.fromJson(e)).toList());
+    } catch (e) {
+      debugPrint("loadAds error: $e");
     }
   }
 
@@ -755,6 +775,7 @@ class PostController extends GetxController {
 
     posts.clear();
     ghostPosts.clear();
+    ads.clear();
     viewedPostIds.clear();
     comments.clear();
     allPersonalPost.clear();

@@ -27,6 +27,7 @@ class PostModel {
   final bool? allowSharing;
   final bool? allowReposting;
   final bool? hideFromTimeline;
+  bool? applyFomo;
 
   final String? postType;
   final bool? showVerificationBadge;
@@ -68,6 +69,7 @@ class PostModel {
     this.allowSharing = true,
     this.allowReposting = true,
     this.hideFromTimeline = false,
+    this.applyFomo = true,
 
     this.postType = "regular",
     this.showVerificationBadge = false,
@@ -149,6 +151,9 @@ class PostModel {
     data['allowSharing'] = allowSharing;
     data['allowReposting'] = allowReposting;
     data['hideFromTimeline'] = hideFromTimeline;
+    if (applyFomo != null) {
+      data['applyFomo'] = applyFomo;
+    }
 
     data['showVerificationBadge'] = showVerificationBadge;
     data['postType'] = postType; //ghost,confession,regular,repost

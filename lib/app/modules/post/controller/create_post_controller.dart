@@ -31,6 +31,7 @@ class CreatePostController extends GetxController {
   final Rxn<FomoWindow> selectedFomoWindow = Rxn<FomoWindow>();
   final RxBool isLoadingFomo = false.obs;
   final RxBool isJoiningFomo = false.obs;
+  final RxBool applyFomo = false.obs;
 
   // final RxBool ghostMode = false.obs;
   final postController = Get.find<PostController>();
@@ -88,10 +89,15 @@ class CreatePostController extends GetxController {
       originalPostId: originalPostId,
       groupId: groupId,
       groupName: groupName,
+      applyFomo: applyFomo.value,
     );
 
     if (locationController.text.isNotEmpty) {
       postModel.location = pm.Location(name: locationController.text);
+    }
+    // Prevent ghost posts from applying FOMO
+    if (postModel.postType == "ghost") {
+      postModel.applyFomo = false;
     }
     await postController.createPost(
       postModel: postModel,

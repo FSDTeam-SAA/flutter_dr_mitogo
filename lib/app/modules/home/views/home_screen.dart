@@ -8,6 +8,7 @@ import 'package:casarancha/app/modules/level/widgets/build_level_info_card.dart'
 import 'package:casarancha/app/modules/post/widgets/poll_widget.dart';
 import 'package:casarancha/app/modules/post/widgets/post_card_widget.dart';
 import 'package:casarancha/app/modules/post/widgets/post_shimmer.dart';
+import 'package:casarancha/app/modules/post/widgets/ad_card_widget.dart';
 import 'package:casarancha/app/modules/story/controllers/view_story_full_screen_controller.dart';
 import 'package:casarancha/app/modules/story/views/create_story_screen.dart';
 import 'package:casarancha/app/modules/story/views/view_story_full_screen.dart';
@@ -94,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
     WakelockPlus.disable();
     controller.clean();
     postController.stopTimer();
-    scrollController.dispose();
     super.dispose();
   }
 
@@ -131,6 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       SizedBox(height: Get.height * 0.02),
                       _buildStory(),
+                      const SizedBox(height: 12),
+                      _buildAds(),
                     ],
                   );
                 }),
@@ -280,6 +282,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Widget _buildAds() {
+    return Obx(() {
+      if (postController.ads.isEmpty) return const SizedBox.shrink();
+      return Column(
+        children: postController.ads
+            .map((ad) => AdCard(ad: ad))
+            .toList(),
+      );
+    });
   }
 
   Widget _buildStory() {

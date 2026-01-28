@@ -18,7 +18,7 @@ class AppBindings implements Bindings {
     Get.put(StorageController());
     Get.put(LocalizationController());
     Get.put(AuthController());
-    Get.put(HomeScrollController());
+    Get.put(HomeScrollController(), permanent: true);
     Get.put(UserController());
     Get.put(PostController());
     Get.put(GroupController());

@@ -36,6 +36,11 @@ class CreatePostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Default to no FOMO participation unless user opts in
+    controller.applyFomo.value = false;
+    if (anonymous == true) {
+      controller.applyFomo.value = false;
+    }
     return Scaffold(
       appBar: _buildAppBar(),
       body: Container(
@@ -347,6 +352,9 @@ class CreatePostScreen extends StatelessWidget {
   }
 
   String? getPostType() {
+    if (anonymous == true) {
+      return "ghost";
+    }
     if (originalPostId != null) {
       return "repost";
     }
@@ -354,6 +362,9 @@ class CreatePostScreen extends StatelessWidget {
   }
 
   String? getVisibilityType() {
+    if (anonymous == true) {
+      return "ghost";
+    }
     if (groupId != null) {
       return "group";
     }
@@ -399,39 +410,75 @@ class CreatePostScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 6),
-            if (isLoading)
+            if (anonymous == true)
+              Text(
+                "FOMO is disabled for ghost/anonymous posts.",
+                style: Get.textTheme.bodySmall,
+              )
+            else if (isLoading)
               const LinearProgressIndicator(minHeight: 3)
-            else if (window == null)
+            else if (controller.activeFomoWindows.isEmpty)
               Text(
                 "No active FOMO window right now. We'll let you know when one starts.",
                 style: Get.textTheme.bodySmall,
               )
-            else
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    window.title,
-                    style: Get.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    _formatDateRange(window),
-                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    "${window.participantCount} joined · ${window.postCount} posts",
-                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
-                  ),
-                ],
+            else ...[
+              Wrap(
+                spacing: 8,
+                runSpacing: 6,
+                children: controller.activeFomoWindows.map((fomo) {
+                  final isSelected = window?.id == fomo.id;
+                  return ChoiceChip(
+                    label: Text(fomo.title, overflow: TextOverflow.ellipsis),
+                    selected: isSelected,
+                    onSelected: (_) {
+                      if (isSelected) {
+                        controller.selectedFomoWindow.value = null;
+                        controller.applyFomo.value = false;
+                      } else {
+                        controller.selectedFomoWindow.value = fomo;
+                        controller.applyFomo.value = true;
+                      }
+                    },
+                    selectedColor: AppColors.primaryColor.withOpacity(0.15),
+                    labelStyle: TextStyle(
+                      color: isSelected ? AppColors.primaryColor : Colors.black87,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  );
+                }).toList(),
               ),
+              const SizedBox(height: 10),
+              if (window != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      window.title,
+                      style: Get.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      _formatDateRange(window),
+                      style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "${window.participantCount} joined · ${window.postCount} posts",
+                      style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey.shade700),
+                    ),
+                  ],
+                ),
+            ],
             const SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: (controller.isJoiningFomo.value || window == null || isLoading)
+                    onPressed: (controller.isJoiningFomo.value ||
+                            window == null ||
+                            isLoading ||
+                            !controller.applyFomo.value)
                         ? null
                         : controller.joinSelectedFomo,
                     style: ElevatedButton.styleFrom(
