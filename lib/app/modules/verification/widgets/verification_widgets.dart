@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:casarancha/app/controller/user_controller.dart';
 import 'package:casarancha/app/modules/verification/controller/verification_controller.dart';
 import 'package:casarancha/app/resources/app_colors.dart';
+import 'package:casarancha/app/widgets/custom_textfield.dart';
 import 'package:casarancha/app/widgets/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,7 +68,7 @@ class BuildIdSelectionStep extends StatelessWidget {
                 label: Text(type['name']!),
                 selected: isSelected,
                 onSelected: (_) =>
-                    _badgeController.verificationType.value = type['id'] ?? 'profile',
+                    _badgeController.setVerificationType(type['id'] ?? 'profile'),
                 selectedColor: AppColors.primaryColor.withOpacity(0.2),
                 labelStyle: TextStyle(
                   color: isSelected ? AppColors.primaryColor : Colors.black87,
@@ -78,9 +79,24 @@ class BuildIdSelectionStep extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        const SizedBox(height: 12),
+        Text(
+          'Full Name',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        const SizedBox(height: 8),
+        CustomTextField(
+          controller: _badgeController.fullNameController,
+          hintText: "Enter your full legal name",
+          bgColor: Colors.white,
+          onChanged: (value) => _badgeController.fullName.value = value.trim(),
+        ),
+        const SizedBox(height: 16),
         Obx(() {
-          final idTypes = _badgeController.idTypes;
+          final idTypes = _badgeController.availableIdTypes;
           RxString selectedIdType = _badgeController.selectedIdType;
           return Expanded(
             child: ListView.builder(
@@ -139,7 +155,8 @@ class BuildIdSelectionStep extends StatelessWidget {
         Obx(
           () => ElevatedButton(
             onPressed:
-                _badgeController.selectedIdType.value.isNotEmpty
+                _badgeController.selectedIdType.value.isNotEmpty &&
+                        _badgeController.fullNameController.text.trim().isNotEmpty
                     ? _badgeController.nextStep
                     : null,
             style: ElevatedButton.styleFrom(
@@ -171,9 +188,7 @@ class BuildFrontIdUploadStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedIdName =
-        _badgeController.idTypes.firstWhere(
-          (idType) => idType['id'] == _badgeController.selectedIdType.value,
-        )['name'];
+        _badgeController.selectedIdName;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -260,9 +275,7 @@ class BuildBackIdUploadStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedIdName =
-        _badgeController.idTypes.firstWhere(
-          (idType) => idType['id'] == _badgeController.selectedIdType.value,
-        )['name'];
+        _badgeController.selectedIdName;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -350,10 +363,7 @@ class BuildReviewStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedIdName =
-        _verificationController.idTypes.firstWhere(
-          (idType) =>
-              idType['id'] == _verificationController.selectedIdType.value,
-        )['name'];
+        _verificationController.selectedIdName;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -400,6 +410,23 @@ class BuildReviewStep extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
+              const Text(
+                'Full Name',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child: Text(
+                  _verificationController.fullNameController.text.trim(),
+                  style: const TextStyle(fontSize: 14),
+                ),
+              ),
+              const SizedBox(height: 16),
               const Text(
                 'ID Front',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -482,6 +509,9 @@ class BuildReviewStep extends StatelessWidget {
                         selfieId: _verificationController.selfieImage.value!,
                         verificationType: _verificationController.verificationType.value,
                         idType: _verificationController.selectedIdType.value,
+                        metadata: {
+                          "fullName": _verificationController.fullNameController.text.trim(),
+                        },
                       );
                     } finally {
                       _verificationController.isLoading.value = false;
