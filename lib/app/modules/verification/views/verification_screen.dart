@@ -22,7 +22,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     if (args is Map && args["verificationType"] is String) {
       final verificationType = (args["verificationType"] as String).trim();
       if (verificationType.isNotEmpty) {
-        controller.verificationType.value = verificationType;
+        controller.setVerificationType(verificationType);
       }
     }
   }

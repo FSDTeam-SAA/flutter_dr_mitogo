@@ -28,41 +28,76 @@ class MediaCarousel extends StatefulWidget {
 }
 
 class _MediaCarouselState extends State<MediaCarousel> {
+  double _resolveHeight(double width) {
+    if (widget.mediaList.isEmpty) {
+      return widget.height;
+    }
+    final safeIndex = widget.currentIndex.value < 0
+        ? 0
+        : widget.currentIndex.value >= widget.mediaList.length
+            ? widget.mediaList.length - 1
+            : widget.currentIndex.value;
+    final media = widget.mediaList[safeIndex];
+    final declaredType = media.type?.toLowerCase();
+    if (declaredType == "audio") {
+      return widget.height;
+    }
+    final dimensions = media.dimensions;
+    if (dimensions == null || dimensions.width <= 0 || dimensions.height <= 0) {
+      return widget.height;
+    }
+    final aspectRatio = dimensions.width / dimensions.height;
+    if (aspectRatio <= 0) return widget.height;
+    return width / aspectRatio;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        InkWell(
-          onTap: () {
-            Get.toNamed(
-              AppRoutes.viewMediaFullScreen,
-              arguments: {
-                "mediaUrls": widget.mediaList,
-                "postModel": widget.postModel,
-              },
-            );
-          },
-          child: SizedBox(
-            height: widget.height,
-            child: PageView.builder(
-              onPageChanged:
-                  (index) => setState(() => widget.currentIndex.value = index),
-              itemCount: widget.mediaList.length,
-              itemBuilder: (context, index) {
-                Media media = widget.mediaList[index];
-                if (media.url?.isEmpty == true) return const SizedBox.shrink();
-                return buildMedia(
-                  media: media,
-                  fit: BoxFit.contain,
-                  postModel: widget.postModel,
-                );
-              },
-            ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width =
+            constraints.maxWidth.isFinite ? constraints.maxWidth : Get.width;
+        final height = _resolveHeight(width);
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+          height: height,
+          child: Stack(
+            children: [
+              InkWell(
+                onTap: () {
+                  Get.toNamed(
+                    AppRoutes.viewMediaFullScreen,
+                    arguments: {
+                      "mediaUrls": widget.mediaList,
+                      "postModel": widget.postModel,
+                    },
+                  );
+                },
+                child: PageView.builder(
+                  onPageChanged:
+                      (index) =>
+                          setState(() => widget.currentIndex.value = index),
+                  itemCount: widget.mediaList.length,
+                  itemBuilder: (context, index) {
+                    Media media = widget.mediaList[index];
+                    if (media.url?.isEmpty == true) {
+                      return const SizedBox.shrink();
+                    }
+                    return buildMedia(
+                      media: media,
+                      fit: BoxFit.contain,
+                      postModel: widget.postModel,
+                    );
+                  },
+                ),
+              ),
+              if (widget.mediaList.length > 1) _buildPageIndicator(),
+              _buildViewCounter(),
+            ],
           ),
-        ),
-        if (widget.mediaList.length > 1) _buildPageIndicator(),
-        _buildViewCounter(),
-      ],
+        );
+      },
     );
   }
 
