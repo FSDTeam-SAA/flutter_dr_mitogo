@@ -96,7 +96,7 @@ class _VideoMediaPlayerState extends State<VideoMediaPlayer>
         }
       },
       child: Stack(
-        fit: StackFit.expand,
+        alignment: Alignment.center,
         children: [
           AspectRatio(
             aspectRatio: _videoController.value.aspectRatio,
