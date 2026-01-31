@@ -16,6 +16,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutx_core/core/theme/gap.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -333,10 +334,6 @@ Widget buildPostActionRowWidget({
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Row(
       children: [
-        if (mediaIcon != null) ...[
-          Icon(mediaIcon, size: 16, color: resolvedIconColor),
-          SizedBox(width: 8),
-        ],
         Obx(
           () => ReactionRowWidget(
             onReactionSelected: (v) async {
@@ -410,6 +407,11 @@ Widget buildPostActionRowWidget({
             textColor: textColor,
           ),
           SizedBox(width: 15),
+        ],
+
+        if (mediaIcon != null) ...[
+          Icon(mediaIcon, size: 22, color: resolvedIconColor),
+          SizedBox(width: 8),
         ],
 
         buildTextButton(
