@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:casarancha/app/data/models/verification_badge_model.dart';
 
 class PostModel {
   final String? id;
@@ -297,6 +298,9 @@ class Author {
   final bool? isVerified;
   final String? level;
   final String? displayName;
+  final String? education;
+  final String? work;
+  final VerificationBadges? verificationBadges;
 
   Author({
     this.id,
@@ -306,6 +310,9 @@ class Author {
     this.isVerified,
     this.level,
     this.displayName,
+    this.education,
+    this.work,
+    this.verificationBadges,
   });
 
   factory Author.fromJson(Map<String, dynamic> json) {
@@ -317,6 +324,9 @@ class Author {
       isVerified: json['isVerified'] ?? false,
       level: json['level'] ?? "",
       displayName: json['displayName'] ?? "",
+      education: json['education'] ?? "",
+      work: json['work'] ?? "",
+      verificationBadges: VerificationBadges.fromJson(json['verificationBadges']),
     );
   }
 

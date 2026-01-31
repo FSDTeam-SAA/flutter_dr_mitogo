@@ -15,6 +15,7 @@ import 'package:casarancha/app/utils/get_thumbnail_network.dart';
 import 'package:casarancha/app/utils/image_picker.dart';
 import 'package:casarancha/app/utils/loaders.dart';
 import 'package:casarancha/app/widgets/custom_button.dart';
+import 'package:casarancha/app/widgets/verification_badge.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -258,17 +259,16 @@ class _ProfileScreenState extends State<ProfileScreen>
         children: [
           Row(
             children: [
-              Text(
-                userModel.value?.displayName ?? "",
+              VerifiedInlineText(
+                text: userModel.value?.displayName ?? "",
+                verified: userModel.value?.verificationBadges?.profile == true ||
+                    userModel.value?.isVerified == true,
                 style: Get.textTheme.bodyMedium!.copyWith(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
+                badgeSize: 16,
               ),
-              const SizedBox(width: 5),
-              userModel.value?.isVerified == true
-                  ? Icon(Icons.verified, size: 16, color: Colors.blue)
-                  : SizedBox.shrink(),
               widget.userId == null ||
                       widget.userId == userController.userModel.value?.id
                   ? SizedBox.shrink()
@@ -293,6 +293,24 @@ class _ProfileScreenState extends State<ProfileScreen>
                   ),
             ],
           ),
+          const SizedBox(height: 4),
+          if ((userModel.value?.education ?? "").isNotEmpty)
+            VerifiedInlineText(
+              text: userModel.value?.education ?? "",
+              verified: userModel.value?.verificationBadges?.school == true,
+              style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey[700]),
+              badgeSize: 12,
+            ),
+          if ((userModel.value?.work ?? "").isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: VerifiedInlineText(
+                text: userModel.value?.work ?? "",
+                verified: userModel.value?.verificationBadges?.work == true,
+                style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey[700]),
+                badgeSize: 12,
+              ),
+            ),
           // const SizedBox(height: 2),
           Obx(() {
             if (userModel.value?.id == userController.userModel.value?.id) {

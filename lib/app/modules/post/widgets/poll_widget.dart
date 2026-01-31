@@ -4,6 +4,7 @@ import 'package:casarancha/app/modules/post/widgets/post_widget.dart';
 import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
 import 'package:casarancha/app/utils/timeago.dart';
+import 'package:casarancha/app/widgets/verification_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polls/flutter_polls.dart';
 import 'package:get/get.dart';
@@ -65,48 +66,91 @@ Widget buildPollWidget({
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      isGhodePost == true
-                          ? Text(
-                            post.author?.anonymousId ?? "",
-                            style: Get.textTheme.bodyMedium!.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                          : InkWell(
-                            onTap: () {
-                              if (isGhodePost == true) return;
-                              Get.toNamed(
-                                AppRoutes.profile,
-                                arguments: {"userId": post.author?.id},
-                              );
-                            },
-                            child: Text(
-                              post.author?.displayName ?? "",
-                              style: Get.textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.bold,
+                  if (isGhodePost == true)
+                    Row(
+                      children: [
+                        Text(
+                          post.author?.anonymousId ?? "",
+                          style: Get.textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          width: 3,
+                          height: 3,
+                          margin: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                        Text(
+                          timeAgo(post.createdAt),
+                          style: TextStyle(fontSize: 10, color: Colors.grey),
+                        ),
+                      ],
+                    )
+                  else
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                if (isGhodePost == true) return;
+                                Get.toNamed(
+                                  AppRoutes.profile,
+                                  arguments: {"userId": post.author?.id},
+                                );
+                              },
+                              child: VerifiedInlineText(
+                                text: post.author?.displayName ?? "",
+                                verified: post.author?.verificationBadges?.profile == true ||
+                                    post.author?.isVerified == true,
+                                style: Get.textTheme.bodyMedium!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                badgeSize: 14,
                               ),
                             ),
-                          ),
-                      Container(
-                        width: 3,
-                        height: 3,
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.primaryColor,
+                            Container(
+                              width: 3,
+                              height: 3,
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                            Text(
+                              timeAgo(post.createdAt),
+                              style: TextStyle(fontSize: 10, color: Colors.grey),
+                            ),
+                          ],
                         ),
-                      ),
-                      Text(
-                        timeAgo(post.createdAt),
-                        style: TextStyle(fontSize: 10, color: Colors.grey),
-                      ),
-                      SizedBox(width: 10),
-                      if (post.author?.isVerified == true)
-                        Icon(Icons.verified, size: 16, color: Colors.blue),
-                    ],
-                  ),
+                        if ((post.author?.education ?? "").isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: VerifiedInlineText(
+                              text: post.author?.education ?? "",
+                              verified: post.author?.verificationBadges?.school == true,
+                              style: const TextStyle(fontSize: 10, color: Colors.grey),
+                              badgeSize: 12,
+                            ),
+                          ),
+                        if ((post.author?.work ?? "").isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: VerifiedInlineText(
+                              text: post.author?.work ?? "",
+                              verified: post.author?.verificationBadges?.work == true,
+                              style: const TextStyle(fontSize: 10, color: Colors.grey),
+                              badgeSize: 12,
+                            ),
+                          ),
+                      ],
+                    ),
                   // Show retweet indicator
                   if (isRetweet)
                     Row(
@@ -219,11 +263,14 @@ Widget buildPollWidget({
                                         arguments: {"userId": post.originalPost?.author?.id},
                                       );
                                     },
-                                    child: Text(
-                                      post.originalPost?.author?.displayName ?? "",
+                                    child: VerifiedInlineText(
+                                      text: post.originalPost?.author?.displayName ?? "",
+                                      verified: post.originalPost?.author?.verificationBadges?.profile == true ||
+                                          post.originalPost?.author?.isVerified == true,
                                       style: Get.textTheme.bodyMedium!.copyWith(
                                         fontWeight: FontWeight.bold,
                                       ),
+                                      badgeSize: 12,
                                     ),
                                   ),
                               Container(
@@ -243,12 +290,6 @@ Widget buildPollWidget({
                                 ),
                               ),
                               SizedBox(width: 5),
-                              if (post.originalPost?.author?.isVerified == true)
-                                Icon(
-                                  Icons.verified,
-                                  size: 14,
-                                  color: Colors.blue,
-                                ),
                             ],
                           ),
                           if (post.originalPost?.location != null)

@@ -45,6 +45,8 @@ class CreatePostController extends GetxController {
   void onInit() {
     selectedMedias.clear();
     allMediaToPreview.clear();
+    applyFomo.value = false;
+    selectedFomoWindow.value = null;
     loadActiveFomoWindows();
     super.onInit();
   }

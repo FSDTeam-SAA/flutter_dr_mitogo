@@ -6,6 +6,7 @@ import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
 import 'package:casarancha/app/utils/get_file_type.dart';
 import 'package:casarancha/app/utils/timeago.dart';
+import 'package:casarancha/app/widgets/verification_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -132,14 +133,57 @@ class _PostCardState extends State<PostCard>
     } else {
       name = widget.post.author?.displayName ?? "";
     }
-    return Row(
+    if (widget.isGhostCard == true) {
+      return Row(
+        children: [
+          Text(name, style: Get.textTheme.bodyMedium),
+          _buildDotSeparator(),
+          Text(
+            timeAgo(widget.post.createdAt),
+            style: const TextStyle(fontSize: 10, color: Colors.grey),
+          ),
+        ],
+      );
+    }
+    final badges = widget.post.author?.verificationBadges;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(name, style: Get.textTheme.bodyMedium),
-        _buildDotSeparator(),
-        Text(
-          timeAgo(widget.post.createdAt),
-          style: const TextStyle(fontSize: 10, color: Colors.grey),
+        Row(
+          children: [
+            VerifiedInlineText(
+              text: name,
+              verified: badges?.profile == true || widget.post.author?.isVerified == true,
+              style: Get.textTheme.bodyMedium,
+              badgeSize: 14,
+            ),
+            _buildDotSeparator(),
+            Text(
+              timeAgo(widget.post.createdAt),
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            ),
+          ],
         ),
+        if ((widget.post.author?.education ?? "").isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: VerifiedInlineText(
+              text: widget.post.author?.education ?? "",
+              verified: badges?.school == true,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+              badgeSize: 12,
+            ),
+          ),
+        if ((widget.post.author?.work ?? "").isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: VerifiedInlineText(
+              text: widget.post.author?.work ?? "",
+              verified: badges?.work == true,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+              badgeSize: 12,
+            ),
+          ),
       ],
     );
   }

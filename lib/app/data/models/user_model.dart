@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:casarancha/app/data/models/verification_badge_model.dart';
 
 class UserModel {
   String? id;
@@ -16,6 +17,7 @@ class UserModel {
   RxInt? followingCount;
   RxBool? isFollowing = false.obs;
   bool? isVerified;
+  VerificationBadges? verificationBadges;
   String? coverPhotoUrl;
   String? password;
   DateTime? createdAt;
@@ -37,6 +39,7 @@ class UserModel {
     this.followerCount,
     this.followingCount,
     this.isVerified,
+    this.verificationBadges,
     this.coverPhotoUrl,
     this.password,
     this.createdAt,
@@ -64,6 +67,7 @@ class UserModel {
       followerCount: RxInt(json['stats']?['followerCount'] ?? 0),
       followingCount: RxInt(json['stats']?['followingCount'] ?? 0),
       isVerified: json['isVerified'] ?? false,
+      verificationBadges: VerificationBadges.fromJson(json['verificationBadges']),
       coverPhotoUrl: json['coverPhotoUrl'] ?? '',
       createdAt:
           json["createdAt"] != null

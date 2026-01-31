@@ -36,11 +36,6 @@ class CreatePostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Default to no FOMO participation unless user opts in
-    controller.applyFomo.value = false;
-    if (anonymous == true) {
-      controller.applyFomo.value = false;
-    }
     return Scaffold(
       appBar: _buildAppBar(),
       body: Container(
