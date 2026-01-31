@@ -53,7 +53,7 @@ class _MediaCarouselState extends State<MediaCarousel> {
                 if (media.url?.isEmpty == true) return const SizedBox.shrink();
                 return buildMedia(
                   media: media,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   postModel: widget.postModel,
                 );
               },
@@ -145,8 +145,24 @@ class _MediaCarouselState extends State<MediaCarousel> {
   IconData _getMediaIcon() {
     if (widget.currentIndex.value < widget.mediaList.length) {
       final media = widget.mediaList[widget.currentIndex.value];
-      final isImage = media.type == "image";
-      return isImage ? Icons.camera_alt : Icons.video_camera_back_rounded;
+      final declaredType = media.type?.toLowerCase();
+      if (declaredType == "image") {
+        return Icons.camera_alt;
+      }
+      if (declaredType == "audio") {
+        return Icons.audiotrack;
+      }
+      if (declaredType == "video") {
+        return Icons.video_camera_back_rounded;
+      }
+      final resolvedType = getMediaType(media.url ?? "");
+      if (resolvedType == FileType.music) {
+        return Icons.audiotrack;
+      }
+      if (resolvedType == FileType.video) {
+        return Icons.video_camera_back_rounded;
+      }
+      return Icons.camera_alt;
     }
     return Icons.camera_alt;
   }

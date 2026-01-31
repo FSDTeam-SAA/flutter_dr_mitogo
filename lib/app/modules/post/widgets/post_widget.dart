@@ -326,10 +326,17 @@ Widget buildPostActionRowWidget({
   Color? textColor,
 }) {
   final controller = Get.find<PostController>();
+  final mediaIcon = _getPostMediaIcon(postModel);
+  final resolvedIconColor =
+      iconColor ?? const Color.fromARGB(255, 65, 6, 5).withValues();
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Row(
       children: [
+        if (mediaIcon != null) ...[
+          Icon(mediaIcon, size: 16, color: resolvedIconColor),
+          SizedBox(width: 8),
+        ],
         Obx(
           () => ReactionRowWidget(
             onReactionSelected: (v) async {
@@ -462,6 +469,40 @@ Widget buildTextButton({
       ],
     ),
   );
+}
+
+FileType _resolveMediaFileType(Media media) {
+  final declaredType = media.type?.toLowerCase();
+  if (declaredType == "video") return FileType.video;
+  if (declaredType == "audio") return FileType.music;
+  if (declaredType == "image") return FileType.image;
+  final url = media.url;
+  if (url == null || url.isEmpty) return FileType.image;
+  return getMediaType(url);
+}
+
+IconData? _getPostMediaIcon(PostModel postModel) {
+  final mediaList = postModel.media;
+  if (mediaList == null || mediaList.isEmpty) return null;
+  bool hasVideo = false;
+  bool hasAudio = false;
+  bool hasImage = false;
+
+  for (final media in mediaList) {
+    final fileType = _resolveMediaFileType(media);
+    if (fileType == FileType.video) {
+      hasVideo = true;
+    } else if (fileType == FileType.music) {
+      hasAudio = true;
+    } else {
+      hasImage = true;
+    }
+  }
+
+  if (hasVideo) return Icons.videocam_rounded;
+  if (hasAudio) return Icons.audiotrack;
+  if (hasImage) return Icons.photo;
+  return null;
 }
 
 final Map<String, String> emojiMap = {

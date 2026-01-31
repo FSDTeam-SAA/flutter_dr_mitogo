@@ -302,6 +302,7 @@ class _PostCardState extends State<PostCard>
 
   // Build original post header
   Widget _buildOriginalPostHeader(PostModel originalPost) {
+    final badges = originalPost.author?.verificationBadges;
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -338,9 +339,13 @@ class _PostCardState extends State<PostCard>
                   },
                   child: Row(
                     children: [
-                      Text(
-                        originalPost.author?.displayName ?? "",
+                      VerifiedInlineText(
+                        text: originalPost.author?.displayName ?? "",
+                        verified:
+                            badges?.profile == true ||
+                            originalPost.author?.isVerified == true,
                         style: Get.textTheme.bodyMedium?.copyWith(fontSize: 13),
+                        badgeSize: 12,
                       ),
                       _buildDotSeparator(),
                       Text(
@@ -406,14 +411,22 @@ class _PostCardState extends State<PostCard>
   Widget _buildOriginalPostMedia(PostModel originalPost) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: MediaCarousel(
-        mediaList: originalPost.media!,
-        height: Get.height * 0.25,
-        viewCount: originalPost.stats?.views ?? RxInt(0),
-        isOriginalPost: true,
-        currentIndex: currentIndex,
-        postModel: originalPost,
-      ),
+      child: Obx(() {
+        final height = _resolveMediaHeight(
+          mediaList: originalPost.media ?? [],
+          defaultHeight: Get.height * 0.25,
+          audioHeight: Get.height * 0.2,
+          availableWidth: Get.width - 20,
+        );
+        return MediaCarousel(
+          mediaList: originalPost.media!,
+          height: height,
+          viewCount: originalPost.stats?.views ?? RxInt(0),
+          isOriginalPost: true,
+          currentIndex: currentIndex,
+          postModel: originalPost,
+        );
+      }),
     );
   }
 
@@ -466,18 +479,22 @@ class _PostCardState extends State<PostCard>
 
   // Build regular post media
   Widget _buildRegularPostMedia() {
-    final mediaType = getMediaType(widget.post.media![0].url!);
-    final height =
-        mediaType == FileType.music ? Get.height * 0.24 : Get.height * 0.56;
-
-    return MediaCarousel(
-      mediaList: widget.post.media!,
-      height: height,
-      viewCount: widget.post.stats?.views ?? RxInt(0),
-      isOriginalPost: false,
-      currentIndex: currentIndex,
-      postModel: widget.post,
-    );
+    return Obx(() {
+      final height = _resolveMediaHeight(
+        mediaList: widget.post.media ?? [],
+        defaultHeight: Get.height * 0.56,
+        audioHeight: Get.height * 0.24,
+        availableWidth: Get.width,
+      );
+      return MediaCarousel(
+        mediaList: widget.post.media!,
+        height: height,
+        viewCount: widget.post.stats?.views ?? RxInt(0),
+        isOriginalPost: false,
+        currentIndex: currentIndex,
+        postModel: widget.post,
+      );
+    });
   }
 
   // Build action buttons row
@@ -525,5 +542,43 @@ class _PostCardState extends State<PostCard>
 
   bool _hasMedia(PostModel postModel) {
     return postModel.media != null && postModel.media!.isNotEmpty;
+  }
+
+  FileType _resolveMediaType(Media media) {
+    final declaredType = media.type?.toLowerCase();
+    if (declaredType == "video") return FileType.video;
+    if (declaredType == "audio") return FileType.music;
+    if (declaredType == "image") return FileType.image;
+    final url = media.url;
+    if (url == null || url.isEmpty) return FileType.image;
+    return getMediaType(url);
+  }
+
+  double _resolveMediaHeight({
+    required List<Media> mediaList,
+    required double defaultHeight,
+    required double audioHeight,
+    double? availableWidth,
+  }) {
+    if (mediaList.isEmpty) return defaultHeight;
+    final safeIndex = currentIndex.value < 0
+        ? 0
+        : currentIndex.value >= mediaList.length
+            ? mediaList.length - 1
+            : currentIndex.value;
+    final media = mediaList[safeIndex];
+    if (_resolveMediaType(media) == FileType.music) {
+      return audioHeight;
+    }
+    final dimensions = media.dimensions;
+    if (dimensions == null || dimensions.width <= 0 || dimensions.height <= 0) {
+      return defaultHeight;
+    }
+    final aspectRatio = dimensions.width / dimensions.height;
+    if (aspectRatio <= 0) {
+      return defaultHeight;
+    }
+    final width = availableWidth ?? Get.width;
+    return width / aspectRatio;
   }
 }

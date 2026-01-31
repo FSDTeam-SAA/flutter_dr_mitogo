@@ -4,10 +4,28 @@ import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class VerificationScreen extends StatelessWidget {
-  VerificationScreen({super.key});
+class VerificationScreen extends StatefulWidget {
+  const VerificationScreen({super.key});
 
-  final controller = Get.put(VerificationController());
+  @override
+  State<VerificationScreen> createState() => _VerificationScreenState();
+}
+
+class _VerificationScreenState extends State<VerificationScreen> {
+  late final VerificationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Get.put(VerificationController());
+    final args = Get.arguments;
+    if (args is Map && args["verificationType"] is String) {
+      final verificationType = (args["verificationType"] as String).trim();
+      if (verificationType.isNotEmpty) {
+        controller.verificationType.value = verificationType;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +58,12 @@ class VerificationScreen extends StatelessWidget {
       default:
         return BuildIdSelectionStep();
     }
+  }
+
+  @override
+  void dispose() {
+    Get.delete<VerificationController>();
+    super.dispose();
   }
 
   // AppBar _buildAppBar() {

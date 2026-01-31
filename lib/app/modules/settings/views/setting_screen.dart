@@ -156,8 +156,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: "get_verified".tr,
                 icon: FontAwesomeIcons.shield,
                 onTap: () {
-                  // Get.toNamed(AppRoutes.altVerification);
-                  Get.toNamed(AppRoutes.usernameVerification);
+                  Get.toNamed(AppRoutes.altVerification);
                 },
               ),
               const SizedBox(height: 10),

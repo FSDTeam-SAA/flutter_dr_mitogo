@@ -22,9 +22,9 @@ class VerificationController extends GetxController {
         {'id': 'national', 'name': 'National ID'},
       ].obs;
   final List<Map<String, String>> verificationTypes = const [
-    {'id': 'profile', 'name': 'Profile'},
+    {'id': 'profile', 'name': 'Name'},
     {'id': 'work', 'name': 'Work'},
-    {'id': 'school', 'name': 'School'},
+    {'id': 'school', 'name': 'Education'},
   ];
 
   void nextStep() {

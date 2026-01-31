@@ -8,6 +8,7 @@ import 'package:casarancha/app/resources/app_colors.dart';
 import 'package:casarancha/app/routes/app_routes.dart';
 import 'package:casarancha/app/utils/get_file_type.dart';
 import 'package:casarancha/app/utils/loaders.dart';
+import 'package:casarancha/app/widgets/verification_badge.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -183,13 +184,18 @@ class ViewMediaFullScreenWidgets {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        postModel.author?.displayName ?? "",
-                        style: TextStyle(
+                      VerifiedInlineText(
+                        text: postModel.author?.displayName ?? "",
+                        verified:
+                            postModel.author?.verificationBadges?.profile ==
+                                true ||
+                            postModel.author?.isVerified == true,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
+                        badgeSize: 14,
                       ),
                       Text(
                         '@${postModel.author?.username ?? ""}',

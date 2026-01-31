@@ -98,7 +98,6 @@ class _VideoMediaPlayerState extends State<VideoMediaPlayer>
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Container(color: Colors.black.withValues(alpha: 0.7)),
           AspectRatio(
             aspectRatio: _videoController.value.aspectRatio,
             child: Chewie(controller: _chewieController!),

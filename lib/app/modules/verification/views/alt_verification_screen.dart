@@ -19,15 +19,27 @@ class AltVerificationScreen extends StatelessWidget {
               SizedBox(height: Get.height * 0.03),
               _buildSettingTile(
                 title: "Name Verification",
-                onTap: () => Get.toNamed(AppRoutes.nameVerification),
+                onTap:
+                    () => Get.toNamed(
+                      AppRoutes.verification,
+                      arguments: {"verificationType": "profile"},
+                    ),
               ),
               _buildSettingTile(
-                title: "School Verification",
-                onTap: () => Get.toNamed(AppRoutes.schoolVerification),
+                title: "Education Verification",
+                onTap:
+                    () => Get.toNamed(
+                      AppRoutes.verification,
+                      arguments: {"verificationType": "school"},
+                    ),
               ),
               _buildSettingTile(
                 title: "Work Verification",
-                onTap: () => Get.toNamed(AppRoutes.workVerification),
+                onTap:
+                    () => Get.toNamed(
+                      AppRoutes.verification,
+                      arguments: {"verificationType": "work"},
+                    ),
               ),
             ],
           ),
